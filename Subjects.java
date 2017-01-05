@@ -1,6 +1,13 @@
+import java.io.File;
+import java.io.FileNotException;
+import java.io.util.Scanner;
+
+
+
 public class Subjects {
 
     private String tests;
+    pri
     private String quizzes;
     private String projects;
     private String homework;
@@ -20,11 +27,11 @@ public class Subjects {
 	breakdown[3]= h;
     }
 
-    
+    public getName() {
+	return name;
+    }
 
-    public int average() {
-	int tested
-		
+    public getTests()
 
     
 
