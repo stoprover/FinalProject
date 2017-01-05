@@ -1,15 +1,3 @@
-public class Grades {
-    private String date;
-    private double score;
+public class translate {
 
-    public Grade(String d, double s) {
-	date = d;
-	score = s;
-    }
-
-    public toDisplay() {
-	return (date + "     " + score);
-    }
-
-
-}
+    //write methods: findGrades, findSubName, find
