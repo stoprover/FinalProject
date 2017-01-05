@@ -7,4 +7,9 @@ public class Grades {
 	score = s;
     }
 
+    public toDisplay() {
+	return (date + "     " + score);
+    }
+
+
 }
