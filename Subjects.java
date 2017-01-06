@@ -7,7 +7,6 @@ import java.io.util.Scanner;
 public class Subjects {
 
     private String tests;
-    pri
     private String quizzes;
     private String projects;
     private String homework;
@@ -31,7 +30,31 @@ public class Subjects {
 	return name;
     }
 
-    public getTests()
+    public getTests(){
+	int dotAmount = 0;
+	for (int i = 0; i < tests.length(); i++){
+	    if (tests.charAt(i) == '.') {
+		dotAmount++;}
+	}
+
+	int[] tG = new int[dotAmount];
+
+	
+	for (int i = 0; i < tG.length; i++){
+	    int index = 0;
+	    String temp = tests;
+	    String val = "";	    
+	    int end = 0;
+	    for (; tests.charAt(i) != '.'; end++) {
+		end++;
+	    }
+	    val = tests.substring(0,end);
+	    int intval = Integer.parseInt(val);
+	    tG[index] = intval;
+	    index++;
+		    }
+		
+
 
     
 
