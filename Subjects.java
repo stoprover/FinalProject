@@ -13,7 +13,7 @@ public class Subjects {
     private int[] breakdown;
     private String name;
 
-    public Subject(String n, String te, String qu, String pr, String hw, int t, int q, int p, int h){
+    public Subjects(String n, String te, String qu, String pr, String hw, int t, int q, int p, int h){
 	name = n;
 	String tests = te;
 	String quizzes = qu;
