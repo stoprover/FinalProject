@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+package Layout;
+import javax.swing.*;
+import java.awt.*;
+public class LoginGUI implements Itemlistener{
+    JPanel cards;
+    final static String Login = "Log in!";
+    final static String CreateAcc = "Create an account!";
+    public void addComp (Container pane){
+	JPanel comboBoxPane = new JPanel();
+String 
+    private Container pane;
+    private JCheckBox pickAnAct;
+    private JButton lesgo;
+    private JLabel username;
+    private JLabel passname;
+    private JTextField userinput;
+    private JTextField passinput;
+    public LoginGUI(){
+	this.setTitle("Log in or sign up");
+=======
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,11 +29,18 @@ public class LoginGUI extends JFrame implements ActionListener{
 
     public LoginGUI() {
 	this.setTitle("My first GUI");
+>>>>>>> 1695bcdde7dc0eb4b8b232089887b81e2babee8f
 	this.setSize(600,400);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	pane = this.getContentPane();
+<<<<<<< HEAD
+	pane.setLayout(new CardLayout());
+
+pickAnAct = new JCheck
+	lesgo = new JButton("Let's go!");
+=======
 	pane.setLayout(new BoxLayout(pane, CardLayout));
 	JButton b = new JButton("ByteMe");
 	b.addActionListener(this);
@@ -124,3 +152,4 @@ public class LoginGUI extends JFrame implements ActionListener{
 pickAnAct = new JCheck
 lesgo = new JButton("Let's go!");*/
 
+>>>>>>> 1695bcdde7dc0eb4b8b232089887b81e2babee8f
