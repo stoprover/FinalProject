@@ -2,6 +2,7 @@
 
 public class Subjects {
 
+    private int goal;
     private String tests;
     private String quizzes;
     private String projects;
@@ -13,11 +14,12 @@ public class Subjects {
     private int[] qG;
     private int[] pG;
     private int[] hG;
+    private double avg;
 
   
 
-    public Subjects(String n, String b, String te, String qu, String pr, String hw){
-
+    public Subjects(String n, int g, String b, String te, String qu, String pr, String hw){
+	goal = g;
 	    name = n;
 	    tests = te;
 	    quizzes = qu;
@@ -182,9 +184,9 @@ public class Subjects {
 	for(int i = 0; i < ary.length; i++){
 	    sum += ary[i];
 	}
-	int terms = ary.length;
-	int avg = sum / terms;
-	return avg;
+	double terms = ary.length;
+	double average  = sum / terms;
+	return average;
     }
 
     public  double average() {
@@ -194,15 +196,44 @@ public class Subjects {
 	double rawP = findAvg(pG) * b[2];
 	double rawH = findAvg(hG) * b[3];
 
-	double avg = (rawT + rawQ + rawP + rawH)/100;
+        avg = (rawT + rawQ + rawP + rawH)/100;
 
 	return avg;
-    }
+    }	    
+
+    public double nextTest() {
+	double needed  = goal - avg;
+	double avgT = findAvg(tG);
+	double terms = tG.length;
+	double total = terms * avgT;
+	
+	return (((avgT +(needed * terms)) * (terms+1)) - total);
 	    
+    }
+
+    public double twoTests() {
+	double needed  = goal - avg;
+	double avgT = findAvg(tG);
+	double terms = tG.length;
+	double total = terms * avgT;
+	
+	return ((((avgT +(needed * terms)) * (terms+2)) - total)/2);
+    }
+
+    public double threeTests() {
+	double needed  = goal - avg;
+	double avgT = findAvg(tG);
+	double terms = tG.length;
+	double total = terms * avgT;
+	
+	return ((((avgT +(needed * terms)) * (terms+3)) - total)/3);
+    }
+
+    
 	
 
     public static void main (String[]args) {
-	Subjects Physics =  new Subjects("Physics", "50.20.20.10.", "98.87.81.92.95.", "100.100.80.80.", "100.", "90.100.90.");
+	Subjects Physics =  new Subjects("Physics", 93, "50.20.20.10.", "98.87.81.92.95.", "100.100.80.80.", "100.", "90.100.90.");
 
 	System.out.println (Physics.getName());
 	System.out.println (toString(Physics.getBreakdown()));
@@ -211,8 +242,13 @@ public class Subjects {
 	System.out.println (toString(Physics.getProjects()));
 	System.out.println (toString(Physics.getHomework()));
 	System.out.println (Physics.average());
+	System.out.println (Physics.nextTest());
+	System.out.println (Physics.twoTests());
+	System.out.println (Physics.threeTests());
         
     }
+
+    
 
 }
 	
