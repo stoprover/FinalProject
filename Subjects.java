@@ -8,7 +8,11 @@ public class Subjects {
     private String homework;
     private String  breakdown;
     private String name;
-
+    private int[] b;
+    private int[] tG;
+    private int[] qG;
+    private int[] pG;
+    private int[] hG;
 
   
 
@@ -19,7 +23,7 @@ public class Subjects {
 	    quizzes = qu;
 	    projects = pr;
 	    homework = hw;
-	     breakdown = b;
+	    breakdown = b;
 	}
     
 
@@ -35,7 +39,7 @@ public class Subjects {
 		dotAmount++;}
 	}
 
-	int[] b = new int[dotAmount];
+	 b = new int[dotAmount];
 
 	String temp = breakdown;
 
@@ -62,7 +66,7 @@ public class Subjects {
 		dotAmount++;}
 	}
 
-	int[] tG = new int[dotAmount];
+        tG = new int[dotAmount];
 
 	String temp = tests;
 
@@ -89,7 +93,7 @@ public class Subjects {
 		dotAmount++;}
 	}
 
-	int[] qG = new int[dotAmount];
+         qG = new int[dotAmount];
 
 	String temp = quizzes;
 
@@ -116,7 +120,7 @@ public class Subjects {
 		dotAmount++;}
 	}
 
-	int[] pG = new int[dotAmount];
+         pG = new int[dotAmount];
 
 	String temp = projects;
 
@@ -143,7 +147,7 @@ public class Subjects {
 		dotAmount++;}
 	}
 
-	int[] hG = new int[dotAmount];
+         hG = new int[dotAmount];
 
 	String temp = homework;
 
@@ -173,6 +177,30 @@ public class Subjects {
       return x;
      }
 
+    private static double findAvg (int[] ary) {
+	int sum = 0;
+	for(int i = 0; i < ary.length; i++){
+	    sum += ary[i];
+	}
+	int terms = ary.length;
+	int avg = sum / terms;
+	return avg;
+    }
+
+    public  double average() {
+
+	double rawT = findAvg(tG) * b[0] ;
+	double rawQ = findAvg(qG) * b[1] ;
+	double rawP = findAvg(pG) * b[2];
+	double rawH = findAvg(hG) * b[3];
+
+	double avg = (rawT + rawQ + rawP + rawH)/100;
+
+	return avg;
+    }
+	    
+	
+
     public static void main (String[]args) {
 	Subjects Physics =  new Subjects("Physics", "50.20.20.10.", "98.87.81.92.95.", "100.100.80.80.", "100.", "90.100.90.");
 
@@ -182,6 +210,8 @@ public class Subjects {
 	System.out.println (toString(Physics.getQuizzes()));
 	System.out.println (toString(Physics.getProjects()));
 	System.out.println (toString(Physics.getHomework()));
+	System.out.println (Physics.average());
+        
     }
 
 }
