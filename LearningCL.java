@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class LearningCL extends JFrame{
     JFrame frame = new JFrame("CardLayout learning");
-    JPanel panelCont = new JPanel();
+    JPanel panelBoth = new JPanel();
     JPanel panelFirst = new JPanel();
     JPanel panelSecond = new JPanel();
     JButton buttonOne = new JButton ("swtich to 2");
@@ -17,32 +17,32 @@ public class LearningCL extends JFrame{
     CardLayout cl = new CardLayout();
 
     public LearningCL(){
-	panelCont.setLayout(cl);
+	panelBoth.setLayout(cl);
 
 	panelFirst.add(buttonOne);
 	panelSecond.add(buttonSecond);
 	//panelFirst.setBackground(Color.BLUE);
 	//panelSecond.setBackground(Color.GREEN);
 
-	panelCont.add(panelFirst, "1");
-	panelCont.add(panelSecond, "2");
-	cl.show(panelCont, "1");
+	panelBoth.add(panelFirst, "1");
+	panelBoth.add(panelSecond, "2");
+	cl.show(panelBoth, "1");
 
 	buttonOne.addActionListener( new ActionListener () {
-	//buttonOne.setActionCommand({
 		@Override
 		public void actionPerformed(ActionEvent arg0){
-		    cl.show(panelCont, "2");
+		    cl.show(panelBoth, "2");
 		}
 	    });
-	buttonSecond.addActionListener( new ActionListener () {//(this) { //new ActionListener () {
+	buttonSecond.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
-		    cl.show(panelCont, "1");
+		    cl.show(panelBoth, "1");
 		}
 	    });
 
-	frame.add(panelCont);
+	frame.add(panelBoth);
+	frame.setTitle("Log in or Sign up");
 	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	frame.pack();
 	frame.setVisible(true);
