@@ -1,4 +1,7 @@
-
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Subjects {
 
@@ -15,9 +18,37 @@ public class Subjects {
     private int[] pG;
     private int[] hG;
     private double avg;
+    private ArrayList<String> data;
+    private String[] dta;
+    private String[] subject;
 
   
+ public void loadData(String fileName){
+     	try{
+     	    Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
+	    while(qw.hasNext()){
+		data.add(qw.next());
+	    }
+     	}catch(FileNotFoundException e){
+    	    System.out.println("Does not exist");
+    	    System.exit(1);
+     	}
+	String[] dta = new String[100];
+	for (int i = 0; i < data.size(); i++){
+	    dta[i] = data.get(i);
+	}
+    
+    }
 
+     public void loadSubject(int x){
+	 int start = 2 + (0*x);
+	 String[] subject = new String[8];
+	 for (int i = 0; i < 8; i++){
+	     subject[i] = dta[start];
+	     start++;
+	 }
+     }
+    
     public Subjects(String n, int g, String b, String te, String qu, String pr, String hw){
 	goal = g;
 	    name = n;
@@ -27,11 +58,23 @@ public class Subjects {
 	    homework = hw;
 	    breakdown = b;
 	}
+
+
+
+       
+    
+   
+	
+	
+    
     
 
 	public String  getName() {
 	    return name;
 	}
+
+ 
+
     
     public int[] getBreakdown(){
 	int dotAmount = 0;
