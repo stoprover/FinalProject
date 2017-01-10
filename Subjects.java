@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Subjects {
-
+    private int subnum;
     private int goal;
     private String tests;
     private String quizzes;
@@ -24,6 +24,7 @@ public class Subjects {
 
   
  public void loadData(String fileName){
+    
      	try{
      	    Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
 	    while(qw.hasNext()){
@@ -33,41 +34,45 @@ public class Subjects {
     	    System.out.println("Does not exist");
     	    System.exit(1);
      	}
-	String[] dta = new String[100];
+	
 	for (int i = 0; i < data.size(); i++){
 	    dta[i] = data.get(i);
 	}
     
     }
 
-     public void loadSubject(int x){
-	 int start = 2 + (0*x);
-	 String[] subject = new String[8];
-	 for (int i = 0; i < 8; i++){
-	     subject[i] = dta[start];
-	     start++;
-	 }
-     }
     
-    public Subjects(String n, int g, String b, String te, String qu, String pr, String hw){
-	goal = g;
-	    name = n;
-	    tests = te;
-	    quizzes = qu;
-	    projects = pr;
-	    homework = hw;
-	    breakdown = b;
-	}
-
-
-
-       
     
+    public Subjects(int x){
+	 data = new ArrayList<String>();
+	subnum = x;
+        goal = 95;
+	tests= "";
+	quizzes = "";
+	projects= "";
+	homework = "";
+	breakdown = "";
+	name = "";
+	dta = new String[200];
    
 	
-	
-    
-    
+	}
+
+    public void fillSubject(){
+	int start = 2 + (0*subnum);
+	String[] subject = new String[7];
+	for (int i = 0; i < 7; i++){
+	    subject[i] = dta[start];
+	    start++;
+	}
+	goal = Integer.parseInt(subject[0]);
+	name = subject[1];
+	tests = subject[3];
+	quizzes = subject[4] ;
+	projects = subject[5];
+	homework = subject[6];
+	breakdown = subject[2];
+    }
 
 	public String  getName() {
 	    return name;
@@ -276,18 +281,20 @@ public class Subjects {
 	
 
     public static void main (String[]args) {
-	Subjects Physics =  new Subjects("Physics", 93, "50.20.20.10.", "98.87.81.92.95.", "100.100.80.80.", "100.", "90.100.90.");
+	Subjects Physics =  new Subjects(1);
+	Physics.loadData("Example2.csv");
 
+	Physics.fillSubject();
 	System.out.println (Physics.getName());
-	System.out.println (toString(Physics.getBreakdown()));
-	System.out.println (toString(Physics.getTests()));
-	System.out.println (toString(Physics.getQuizzes()));
-	System.out.println (toString(Physics.getProjects()));
-	System.out.println (toString(Physics.getHomework()));
-	System.out.println (Physics.average());
-	System.out.println (Physics.nextTest());
-	System.out.println (Physics.twoTests());
-	System.out.println (Physics.threeTests());
+	 System.out.println (toString(Physics.getBreakdown()));
+	 System.out.println (toString(Physics.getTests()));
+	 System.out.println (toString(Physics.getQuizzes()));
+	 System.out.println (toString(Physics.getProjects()));
+	 System.out.println (toString(Physics.getHomework()));
+	 System.out.println (Physics.average());
+	 System.out.println (Physics.nextTest());
+	 System.out.println (Physics.twoTests());
+	 System.out.println (Physics.threeTests());
         
     }
 
