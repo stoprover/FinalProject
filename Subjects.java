@@ -282,7 +282,7 @@ public class Subjects {
 
     public static void main (String[]args) {
 	Subjects Physics =  new Subjects(1);
-	Physics.loadData("Example2.csv");
+	Physics.loadData("Example.csv");
 
 	Physics.fillSubject();
 	System.out.println (Physics.getName());
