@@ -4,11 +4,53 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Login{
+    String username;
+    String password;
+    Boolean goodPass;
+    Boolean goodUser;
+    Boolean goOn;
+    //maybe private, maybe not
+    public Login(String u, String p){
+	username = u;
+	password = p;
+    }
     public void readFile(String name){
 	try{
 	    Scanner s = new Scanner(new File (name));
-	    while (s.hasNext()){
-		System.out.println(s.next());
+	    goOn = true;//int i = 0;
+	    while (goOn && s.hasNextLine()){//inefficient loop bc loops thru users even after the right one is found
+		/**i++;
+	    }
+	    for (int j = 0; j < i; j++){*/
+		String nextAcc = s.nextLine();
+		String nextUser = nextAcc.substring(0, nextAcc.indexOf(','));
+		System.out.println("|" + nextUser + "|");
+		System.out.println("|" + username + "|");
+		if (nextUser.equals(username)){
+		    String restOfAcc = nextAcc.substring(nextAcc.indexOf(',') + 1, nextAcc.length());
+		    String nextPass = restOfAcc.substring(0, restOfAcc.indexOf(','));
+		    System.out.println("|" + nextPass + "|");
+		    System.out.println("|" + password + "|");
+		    if (nextPass.equals(password)){
+			goodPass = true;
+			System.out.println("Success");
+			goOn = false;
+			//j = i;
+		    }
+		    else {
+			goodPass = false;
+			System.out.println("Bad Pass");
+			//j = i;
+			goOn = false;
+		    }
+		}
+		if (!(s.hasNextLine())){
+		    goodUser = false;
+		    System.out.println("Bad User");
+		}
+		    
+		//System.out.println(nextAcc);
+		//System.out.println(s.next());
 	    }
 	}catch(FileNotFoundException e){
 	    System.out.println("No such file");
@@ -16,8 +58,13 @@ public class Login{
 	}
     }
     public static void main(String[]args){
-	Login l = new Login();
-	l.readFile("Example2.csv");
+	Login l = new Login("Bob", "1234567890");
+	l.readFile("Example.csv");
+	Login m = new Login("Bob", "lkjbsdf");
+	m.readFile("Example.csv");
+	Login n = new Login("sdlfk", "lkg");
+	n.readFile("Example.csv");
+    }
 }
 /**import java.util.Scanner;
 import java.io.File;
@@ -43,7 +90,6 @@ public class Login{
 	    System.out.print(s.next());
 	}
 	s.close();*/
-    }
     
 	    //new String[72];//s.next();
 	/**

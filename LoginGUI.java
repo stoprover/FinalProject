@@ -20,14 +20,18 @@ public class LoginGUI extends JFrame{
     private JLabel passLogLabel = new JLabel ("Password: ");
     private JTextField userLogInput = new JTextField(12);
     private JPasswordField passLogInput = new JPasswordField(12);
+    private JTextField logMessage = new JTextField(12);
     private JButton toLogIn = new JButton ("Log in!");
     private JButton switchToSign = new JButton ("Sign up instead");
     private JLabel userSignLabel = new JLabel ("Username: ");
     private JLabel passSignLabel = new JLabel ("Password: ");
     private JTextField userSignInput = new JTextField(12);
-    private JPasswordField passSignInput = new JPasswordField(12); 
+    private JPasswordField passSignInput = new JPasswordField(12);
+    private JTextField signMessage = new JTextField(12);
     private JButton toSignUp = new JButton("Sign up!");
     private JButton switchToLog = new JButton ("Log in instead");
+    Boolean goodPass;
+    Boolean goodUser;
     CardLayout cl = new CardLayout();
 
     public LoginGUI(){
@@ -38,12 +42,14 @@ public class LoginGUI extends JFrame{
 	panelLog.add(passLogInput);
 	panelLog.add(toLogIn);
 	panelLog.add(switchToSign);
+	panelLog.add(logMessage);
 	panelSign.add(userSignLabel);
 	panelSign.add(userSignInput);
 	panelSign.add(passSignLabel);
 	panelSign.add(passSignInput);
 	panelSign.add(toSignUp);
 	panelSign.add(switchToLog);
+	panelSign.add(signMessage);
 	//panelLog.setBackground(Color.BLUE);
 	//panelSign.setBackground(Color.GREEN);
 
