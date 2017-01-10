@@ -63,8 +63,9 @@ public class LoginGUI extends JFrame{
 		public void actionPerformed(ActionEvent arg0){
 		    String apple = userLogInput.getText();
 		    userSignInput.setText(apple);
-		    dispose();
-		    new LoginGUI();
+		    dispose();//this should close the window, but that's a minor technicality
+		    new LoginGUI();//this shoudl actually be nwhatever Janice chooses to be her main GUI.
+
 		}
 	    });
 
