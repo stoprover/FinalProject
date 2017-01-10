@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,13 +19,13 @@ public class LoginGUI extends JFrame{
     private JLabel userLogLabel = new JLabel ("Username: ");
     private JLabel passLogLabel = new JLabel ("Password: ");
     private JTextField userLogInput = new JTextField(12);
-    private JTextField passLogInput = new JTextField(12);
+    private JPasswordField passLogInput = new JPasswordField(12);
     private JButton toLogIn = new JButton ("Log in!");
     private JButton switchToSign = new JButton ("Sign up instead");
     private JLabel userSignLabel = new JLabel ("Username: ");
     private JLabel passSignLabel = new JLabel ("Password: ");
     private JTextField userSignInput = new JTextField(12);
-    private JTextField passSignInput = new JTextField(12); 
+    private JPasswordField passSignInput = new JPasswordField(12); 
     private JButton toSignUp = new JButton("Sign up!");
     private JButton switchToLog = new JButton ("Log in instead");
     CardLayout cl = new CardLayout();
@@ -53,6 +52,16 @@ public class LoginGUI extends JFrame{
 	cl.show(panelBoth, "1");
 	//	this.show(panelBoth, "1");
 
+	toLogIn.addActionListener (new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent arg0){
+		    String apple = userLogInput.getText();
+		    userSignInput.setText(apple);
+		    dispose();
+		    new LoginGUI();
+		}
+	    });
+
 	switchToSign.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -74,10 +83,17 @@ public class LoginGUI extends JFrame{
 	frame.pack();
 	frame.setVisible(true);
     }
+    public String getInfo(JTextField jt){
+	String text = jt.getText();
+	System.out.println(text);
+	return text;
+    }
 
     public static void main(String[]args){
         LoginGUI l = new LoginGUI();
 	l.setVisible(true);
+	//	getInfo(userLogInput);
+	//System.out.println(this.getInfo(userLogInput));
 	/**	SwingUtilities.invokeLater(new Runnable(){
 		//@Override
 		public void run(){
@@ -88,7 +104,6 @@ public class LoginGUI extends JFrame{
 }
 /**import java.awt.*;
 =======
-<<<<<<< HEAD
 package Layout;
 import javax.swing.*;
 import java.awt.*;
@@ -249,7 +264,7 @@ pickAnAct = new JCheck
 pickAnAct = new JCheck
 lesgo = new JButton("Let's go!");*/
 
-<<<<<<< HEAD
+/**<<<<<<< HEAD
 =======
 >>>>>>> 1695bcdde7dc0eb4b8b232089887b81e2babee8f
->>>>>>> 1e9352717887cb5cd62685b4ec6c2851f562eb2e
+>>>>>>> 1e9352717887cb5cd62685b4ec6c2851f562eb2e*/
