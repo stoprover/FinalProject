@@ -278,7 +278,9 @@ public class Subjects {
     }
 
     
-	
+    public String advise() {
+	return ("In order to reach your goal of " + goal + " you must score " + nextTest() + " on your next test, or score " + twoTests() + " on your next two tests, or " + threeTests() + " on your next three tests.");
+    }
 
     public static void main (String[]args) {
 	Subjects Physics =  new Subjects(1);
@@ -295,7 +297,7 @@ public class Subjects {
 	 System.out.println (Physics.nextTest());
 	 System.out.println (Physics.twoTests());
 	 System.out.println (Physics.threeTests());
-        
+	 System.out.println (Physics.advise());
     }
 
     
