@@ -21,6 +21,7 @@ public class Subjects {
     private ArrayList<String> data;
     private String[] dta;
     private String[] subject;
+    
 
   
  public void loadData(String fileName){
@@ -74,6 +75,11 @@ public class Subjects {
 	breakdown = subject[2];
     }
 
+
+    public int getGoal() {
+	return goal;
+    }
+    
 	public String  getName() {
 	    return name;
 	}
@@ -279,7 +285,14 @@ public class Subjects {
 
     
     public String advise() {
-	return ("In order to reach your goal of " + goal + " you must score " + nextTest() + " on your next test, or score " + twoTests() + " on your next two tests, or " + threeTests() + " on your next three tests.");
+	String one = "" + (int)Math.round(nextTest());
+	String two = "" + (int)Math.round(twoTests());
+	String three = "" + (int) Math.round(threeTests());
+	
+	
+	String blah = "In order to reach your goal of " + goal + " you must score " + one + " \n on your next test, or score " + two + "  on your next two tests,\n or " + three + " on your next three tests.   " ;
+
+	return blah;
     }
 
     public static void main (String[]args) {

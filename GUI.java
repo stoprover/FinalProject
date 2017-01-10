@@ -22,43 +22,102 @@ public class GUI extends JFrame {
     public static void main(String[] args){	
 	new GUI()	;
     }
+
      
     private JLabel sub;
-    private JList subList;
+    private JLabel portion2;
+    private JLabel portion1;
+    private JLabel portion3;
+    private JLabel portion4;
+    private JList subList1;
+    private JList subList2;
+    private JList subList3;
+    private JList subList4;
     private JLabel advice;
 
    
-	public GUI(){
-		
-	        //-----------------------------------------------------------------
-		this.setSize(600, 700);
-		this.setResizable(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("Robo-Counselor: Grade Manager");
-		JPanel panel = new JPanel();
-		//-----------------------------------------------------------------
+    public GUI(){
 
-	        panel.setLayout(new GridLayout(0,1,4,4));
-	        
-		this.add(panel);
-		this.setVisible(true);//opens window
+	    
+	Subjects Physics =  new Subjects(1);
+	Physics.loadData("Example.csv");
+	int[] scoresT = Physics.getTests();
+	int[] scoresQ = Physics.getQuizzes();
+	int[] scoresP = Physics.getProjects();
+	int[] scoresH = Physics.getHomework();
+	String blah = (Physics.advise());
+
 		
-		//------------------------
-		DefaultListModel<String> listModel = new DefaultListModel<>();
-		listModel.addElement("APUSH");
-		listModel.addElement("Physics");
-		listModel.addElement("PreCalculus");
-		subList  = new JList<>(listModel);
+	//-----------------------------------------------------------------
+	this.setSize(1000, 800);
+        
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	this.setTitle("Robo-Counselor: Grade Manager");
+	JPanel panel = new JPanel();
+	//-----------------------------------------------------------------
+
+	panel.setLayout(new GridLayout(0,1,4,4));
+	        
+	this.add(panel);
+	this.setVisible(true);//opens window
+		
+	//------------------------
+	DefaultListModel<String> listModel1 = new DefaultListModel<>();
+	for (int i = 0; i < scoresT.length ; i++){
+	    String input = "" + scoresT[i];
+	    listModel1.addElement(input);
+	}
+		subList1  = new JList<>(listModel1);
+
+		DefaultListModel<String> listModel2 = new DefaultListModel<>();
+		for (int i = 0; i < scoresQ.length ; i++){
+		    String input = "" + scoresQ[i];
+		    listModel2.addElement(input);
+		}
+		subList2  = new JList<>(listModel2);
+
+		DefaultListModel<String> listModel3 = new DefaultListModel<>();
+		for (int i = 0; i < scoresP.length ; i++){
+		    String input = "" + scoresP[i];
+		    listModel3.addElement(input);
+		}
+		subList3  = new JList<>(listModel3);
+
+		DefaultListModel<String> listModel4 = new DefaultListModel<>();
+		for (int i = 0; i < scoresH.length ; i++){
+		    String input = "" + scoresH[i];
+		    listModel4.addElement(input);
+		}
+		subList4  = new JList<>(listModel4);
         	//------------------------
-		sub = new JLabel("Physics");
-		advice = new JLabel("In order to reach your goal of _____, you must score _______ on you next test.");
-	
+		sub = new JLabel("     Physics         ");
+		sub.setFont(new Font("Serif", Font.PLAIN, 30));
+
+		portion1 = new JLabel("         Tests         ");
+		portion1.setFont(new Font("Serif", Font.PLAIN, 25));
+		portion2 = new JLabel("         Quizzes         ");
+		portion2.setFont(new Font("Serif", Font.PLAIN, 25));
+		portion3 = new JLabel("         Projects         ");
+		portion3.setFont(new Font("Serif", Font.PLAIN, 25));
+		portion4 = new JLabel("         Homework         ");
+		portion4.setFont(new Font("Serif", Font.PLAIN, 25));
+		
+		advice = new JLabel(blah);
+
+
+		advice.setFont(new Font("Serif", Font.PLAIN, 15));
 
 
 		
 		panel.add(sub);
-	        panel.add(subList);
-		   	
+		panel.add(portion1);
+	        panel.add(subList1);
+		panel.add(portion2);
+	        panel.add(subList2);
+		panel.add(portion3);
+	        panel.add(subList3);
+		panel.add(portion4);
+	        panel.add(subList4);
 		panel.add(advice);
 	}
 
