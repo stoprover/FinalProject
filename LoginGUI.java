@@ -1,4 +1,94 @@
 <<<<<<< HEAD
+import java.awt.CardLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class LoginGUI extends JFrame{
+    //some standardization: sign up/sign in refers to creating an account, log in refers to already having one
+    //to-do's: if there is already such a username as being inputted to signup, forbid it
+    //password field (later problem)
+    //possibility: make login buttons switch to a third card: janices.
+    private JFrame frame = new JFrame("LogSign");
+    private JPanel panelBoth = new JPanel();
+    private JPanel panelLog = new JPanel();
+    private JPanel panelSign = new JPanel();
+    private JLabel userLogLabel = new JLabel ("Username: ");
+    private JLabel passLogLabel = new JLabel ("Password: ");
+    private JTextField userLogInput = new JTextField(12);
+    private JTextField passLogInput = new JTextField(12);
+    private JButton toLogIn = new JButton ("Log in!");
+    private JButton switchToSign = new JButton ("Sign up instead");
+    private JLabel userSignLabel = new JLabel ("Username: ");
+    private JLabel passSignLabel = new JLabel ("Password: ");
+    private JTextField userSignInput = new JTextField(12);
+    private JTextField passSignInput = new JTextField(12); 
+    private JButton toSignUp = new JButton("Sign up!");
+    private JButton switchToLog = new JButton ("Log in instead");
+    CardLayout cl = new CardLayout();
+
+    public LoginGUI(){
+	panelBoth.setLayout(cl);
+	panelLog.add(userLogLabel);
+	panelLog.add(userLogInput);
+	panelLog.add(passLogLabel);
+	panelLog.add(passLogInput);
+	panelLog.add(toLogIn);
+	panelLog.add(switchToSign);
+	panelSign.add(userSignLabel);
+	panelSign.add(userSignInput);
+	panelSign.add(passSignLabel);
+	panelSign.add(passSignInput);
+	panelSign.add(toSignUp);
+	panelSign.add(switchToLog);
+	//panelLog.setBackground(Color.BLUE);
+	//panelSign.setBackground(Color.GREEN);
+
+	panelBoth.add(panelLog, "1");
+	panelBoth.add(panelSign, "2");
+	cl.show(panelBoth, "1");
+	//	this.show(panelBoth, "1");
+
+	switchToSign.addActionListener( new ActionListener () {
+		@Override
+		public void actionPerformed(ActionEvent arg0){
+		    cl.show(panelBoth, "2");
+		    //this.show(panelBoth, "2");
+		}
+	    });
+	switchToLog.addActionListener( new ActionListener () {
+		@Override
+		public void actionPerformed(ActionEvent arg0){
+		    cl.show(panelBoth, "1");
+		    //this.show(panelBoth, "1");
+		}
+	    });
+
+	frame.add(panelBoth);
+	frame.setTitle("Log in or Sign up");
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.pack();
+	frame.setVisible(true);
+    }
+
+    public static void main(String[]args){
+        LoginGUI l = new LoginGUI();
+	l.setVisible(true);
+	/**	SwingUtilities.invokeLater(new Runnable(){
+		//@Override
+		public void run(){
+		    new LearningCL();
+		}
+		});*/
+    }
+}
+/**import java.awt.*;
+=======
+<<<<<<< HEAD
 package Layout;
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +110,7 @@ String
 	this.setTitle("Log in or sign up");
 =======
 import java.awt.*;
+>>>>>>> 1e9352717887cb5cd62685b4ec6c2851f562eb2e
 import java.awt.event.*;
 import javax.swing.*;
 public class LoginGUI extends JFrame implements ActionListener{
@@ -29,18 +120,24 @@ public class LoginGUI extends JFrame implements ActionListener{
 
     public LoginGUI() {
 	this.setTitle("My first GUI");
+<<<<<<< HEAD
+=======
 >>>>>>> 1695bcdde7dc0eb4b8b232089887b81e2babee8f
+>>>>>>> 1e9352717887cb5cd62685b4ec6c2851f562eb2e
 	this.setSize(600,400);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	pane = this.getContentPane();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 	pane.setLayout(new CardLayout());
 
 pickAnAct = new JCheck
 	lesgo = new JButton("Let's go!");
 =======
+>>>>>>> 1e9352717887cb5cd62685b4ec6c2851f562eb2e
 	pane.setLayout(new BoxLayout(pane, CardLayout));
 	JButton b = new JButton("ByteMe");
 	b.addActionListener(this);
@@ -152,4 +249,7 @@ pickAnAct = new JCheck
 pickAnAct = new JCheck
 lesgo = new JButton("Let's go!");*/
 
+<<<<<<< HEAD
+=======
 >>>>>>> 1695bcdde7dc0eb4b8b232089887b81e2babee8f
+>>>>>>> 1e9352717887cb5cd62685b4ec6c2851f562eb2e
