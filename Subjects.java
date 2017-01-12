@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Subjects {
+    private int user;
     private int subnum;
     private int goal;
     private String tests;
@@ -24,13 +25,20 @@ public class Subjects {
     
 
   
- public void loadData(String fileName){
+    public void loadData(String fileName, String username){
     
-     	try{
-     	    Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
+     	try{ Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
+	    String temp = "";
+	    while (!temp.equals(username)){
+		qw.nextLine();
+		temp = qw.next();
+	  
+	    }
+	    
+	    data.add(temp);
 	    while(qw.hasNext()){
 		data.add(qw.next());
-	    }
+	    } 
      	}catch(FileNotFoundException e){
     	    System.out.println("Does not exist");
     	    System.exit(1);
@@ -60,7 +68,7 @@ public class Subjects {
 	}
 
     public void fillSubject(){
-	int start = 2 + (0*subnum);
+	int start = 2 + (7*subnum);
 	String[] subject = new String[7];
 	for (int i = 0; i < 7; i++){
 	    subject[i] = dta[start];
@@ -221,17 +229,17 @@ public class Subjects {
 
 	return hG;
     }
-
-     private static String toString(int[] ary){
-      String x = "[ ";
-      for(int i = 0; i < ary.length; i++){
-	  if (i < ary.length-1){
-	  x = x + ary[i] + ", ";
-	  }
-	  else { x = x + ary[ary.length-1] + "]";}
-      }
-      return x;
-     }
+    
+    public  static String toString(int[] ary){
+	String x = "[ ";
+	for(int i = 0; i < ary.length; i++){
+	    if (i < ary.length-1){
+		x = x + ary[i] + ", ";
+	    }
+	    else { x = x + ary[ary.length-1] + "]";}
+	}
+	return x;
+    }
 
     private static double findAvg (int[] ary) {
 	int sum = 0;
@@ -297,7 +305,7 @@ public class Subjects {
 
     public static void main (String[]args) {
 	Subjects Physics =  new Subjects(1);
-	Physics.loadData("Example.csv");
+	Physics.loadData("Example.csv", "Bob");
 
 	Physics.fillSubject();
 	System.out.println (Physics.getName());
