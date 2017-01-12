@@ -20,6 +20,7 @@ public class Login{
 	    }
 	    for (int j = 0; j < i; j++){*/
 		String nextAcc = s.nextLine();
+		//System.out.println(nextAcc + "sep");
 		String nextUser = nextAcc.substring(0, nextAcc.indexOf(','));
 		if (username.equals("")){
 		    return "Empty User";
