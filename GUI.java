@@ -1,27 +1,13 @@
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.SwingUtilities;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.GridLayout;
 import javax.swing.*;
-import javax.swing.event.*;
-import java.awt.event.*;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.*;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-
-
 public class GUI extends JFrame {
 
+    //Really not necessary, but helps me keep track.
     private String scoresQ;
     private String scoresT;
     private String  scoresP;
@@ -32,17 +18,12 @@ public class GUI extends JFrame {
     private String[] subNames;
     private int subnum;
  
-    
-    
-
-
-    
-    
+    // MAIN
     public static void main(String[] args){
 	new GUI("Example.csv", "Bob")	;
     }
 
-     
+    //Features 
     private JLabel sub;
     private JLabel portion2;
     private JLabel portion1;
@@ -54,6 +35,7 @@ public class GUI extends JFrame {
     private JList subList4;
     private JTextArea advice;
     
+    //toString for the grade data
     private static String toString(int[] ary){
 	String x = " ";
 	int y = 0;
@@ -67,7 +49,10 @@ public class GUI extends JFrame {
 	return x;
     }
    
+    // GUI STUFF
     public GUI(String fileName, String user){
+
+	// Get Subjects
 	data = new ArrayList<String>();
 	subNames = new String[10];
      	try{ Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
@@ -103,9 +88,7 @@ public class GUI extends JFrame {
 	    subNames[i] = data.get(i);
 	}
     
-	
-
-	
+	//Methods from Subjects.java
 	Subjects nom =  new Subjects(0);
 	nom.loadData(fileName,user);
 	nom.fillSubject();
@@ -116,87 +99,96 @@ public class GUI extends JFrame {
 	blah = nom.advise();
 	name = nom.getName();
 		
-	//-----------------------------------------------------------------
-	this.setSize(700, 800);
+	//Dimensions
+	this.setSize(550, 650);
         
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setTitle("Robo-Counselor: Grade Manager");
 	JPanel panel = new JPanel();
 	//-----------------------------------------------------------------
 
+	//GRID LAYOUT
 	panel.setLayout(new GridLayout(0,1,4,4));
 	        
 	this.add(panel);
 	this.setVisible(true);//opens window
 		
-	//------------------------
+	//Grade subLists
 	DefaultListModel<String> listModel1 = new DefaultListModel<>();
 	listModel1.addElement(scoresT);
 	subList1  = new JList<>(listModel1);
-	subList1.setFont(new Font("Serif", Font.PLAIN, 20));
+	subList1.setFont(new Font("Serif", Font.PLAIN, 15));
 	
 	DefaultListModel<String> listModel2 = new DefaultListModel<>();
 	listModel2.addElement(scoresQ);
 	subList2  = new JList<>(listModel2);
-	subList2.setFont(new Font("Serif", Font.PLAIN, 20));
+	subList2.setFont(new Font("Serif", Font.PLAIN, 15));
 	
 	DefaultListModel<String> listModel3 = new DefaultListModel<>();
 	listModel3.addElement(scoresP);
 	subList3  = new JList<>(listModel3);
-	subList3.setFont(new Font("Serif", Font.PLAIN, 20));
+	subList3.setFont(new Font("Serif", Font.PLAIN, 15));
 	
 	DefaultListModel<String> listModel4 = new DefaultListModel<>();
 	listModel4.addElement(scoresH);
 	subList4  = new JList<>(listModel4);
-	subList4.setFont(new Font("Serif", Font.PLAIN, 20));
+	subList4.setFont(new Font("Serif", Font.PLAIN, 15));
 
-	//-----------
+	//ComboBoxes
+	String[] function = new String[3];
+	function[0] = "Grade Tracker";
+	function[1] = "Sleep Tracker";
+	function[2]= "Activity Tracker";
+	JComboBox<String> funcList = new JComboBox<>(function);
+	funcList.setFont(new Font("Serif", Font.PLAIN, 18));
+	String selectedfunc = (String) funcList.getSelectedItem();
+	System.out.println("Welcome to " + selectedfunc);
+
 	JComboBox<String> subList = new JComboBox<>(subNames);
 	subList.setFont(new Font("Serif", Font.PLAIN, 18));
-
-	// get the selected item:
-	String selectedsub = (String) subList.getSelectedItem();
+       	String selectedsub = (String) subList.getSelectedItem();
 	System.out.println("You seleted the subject: " + selectedsub);
-//------------------------------------------------
 
-		sub = new JLabel("     " + selectedsub);
-		sub.setFont(new Font("Serif", Font.PLAIN, 30));
+	//Titles
 
-		portion1 = new JLabel("         Tests         ");
-		portion1.setFont(new Font("Serif", Font.PLAIN, 25));
-		portion2 = new JLabel("         Quizzes         ");
-		portion2.setFont(new Font("Serif", Font.PLAIN, 25));
-		portion3 = new JLabel("         Projects         ");
-		portion3.setFont(new Font("Serif", Font.PLAIN, 25));
-		portion4 = new JLabel("         Homework         ");
-		portion4.setFont(new Font("Serif", Font.PLAIN, 25));
+	sub = new JLabel("     " + selectedsub);
+	sub.setFont(new Font("Serif", Font.BOLD, 25));
 
-		advice = new JTextArea(900, 300);
-		advice.setText(blah);
-		advice.setWrapStyleWord(true);
-		advice.setLineWrap(true);
-		advice.setOpaque(false);
-		advice.setEditable(false);
-		advice.setFocusable(false);
-		
-		
-		advice.setFont(new Font("Lucida Handwriting", Font.PLAIN, 15));
-		System.out.println(blah);
+	portion1 = new JLabel("         Tests         ");
+	portion1.setFont(new Font("Serif", Font.BOLD, 20));
+	portion2 = new JLabel("         Quizzes         ");
+	portion2.setFont(new Font("Serif", Font.BOLD, 20));
+	portion3 = new JLabel("         Projects         ");
+	portion3.setFont(new Font("Serif", Font.BOLD, 20));
+	portion4 = new JLabel("         Homework         ");
+	portion4.setFont(new Font("Serif", Font.BOLD, 20));
 
+	advice = new JTextArea(900, 300);
+	advice.setText(blah);
+	advice.setWrapStyleWord(true);
+	advice.setLineWrap(true);
+	advice.setOpaque(false);
+	advice.setEditable(false);
+	advice.setFocusable(false);	
+	advice.setFont(new Font("Lucida Handwriting", Font.PLAIN, 15));
+	System.out.println(blah);
 
-		panel.add(subList);
-		panel.add(sub);
-		panel.add(portion1);
-	        panel.add(subList1);
-		panel.add(portion2);
-	        panel.add(subList2);
-		panel.add(portion3);
-	        panel.add(subList3);
-		panel.add(portion4);
-	        panel.add(subList4);
-		panel.add(advice);
+	//ADD STUFF
+	panel.add(funcList);
+	panel.add(subList);
+	panel.add(sub);
+	panel.add(portion1);
+	panel.add(subList1);
+	panel.add(portion2);
+	panel.add(subList2);
+	panel.add(portion3);
+	panel.add(subList3);
+	panel.add(portion4);
+	panel.add(subList4);
+	panel.add(advice);
 	
-	}
+    }
 
 }
 
+//Ref:::https://examples.javacodegeeks.com/desktop-java/swing/jtabbedpane/create-jtabbedpane-example/
