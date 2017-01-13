@@ -28,6 +28,9 @@ public class Subjects {
     public void loadData(String fileName, String username){
     
      	try{ Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
+
+
+	    // Add data
 	    String temp = "";
 	    while (!temp.equals(username)){
 		qw.nextLine();
@@ -37,8 +40,11 @@ public class Subjects {
 	    user = temp;
 	    data.add(temp);
 	    while(qw.hasNext()){
-		data.add(qw.next());
-	    } 
+		data.add(qw.next());	
+	    }
+
+	    
+	    
      	}catch(FileNotFoundException e){
     	    System.out.println("Does not exist");
     	    System.exit(1);
