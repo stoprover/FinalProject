@@ -82,7 +82,7 @@ public class LoginGUI extends JFrame{
 		    String results = backend.readFile("Example.csv");
 		    if (results.equals("Success")){
 			dispose();
-			new GUI();
+			new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Bad Pass")){
 			logMessage.setText("Messages: The password inputted does not match this username.");
