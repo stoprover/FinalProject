@@ -19,8 +19,19 @@ import java.awt.*;
 
 public class GUI extends JFrame {
 
-    public static void main(String[] args){	
-	new GUI()	;
+    private String scoresQ;
+    private String scoresT;
+    private String  scoresP;
+    private String scoresH;
+    private String blah;
+    private String name;
+
+
+    
+    public static void main(String[] args){
+	
+
+	new GUI("Example.csv", "Bob")	;
     }
 
      
@@ -34,19 +45,31 @@ public class GUI extends JFrame {
     private JList subList3;
     private JList subList4;
     private JLabel advice;
-
+    
+ private static String toString(int[] ary){
+	   String x = " ";
+	   int y = 0;
+	     for(int i = 0; i < ary.length; i++){
+		 y++;
+	 	
+	 	    x = x + "#" + y + ": " +  ary[i] + "    ";
+	 	
+	 	
+	     }
+	     return x;
+	 }
    
-    public GUI(){
+    public GUI(String fileName, String user){
 
-	    
-	Subjects Physics =  new Subjects(1);
-	Physics.loadData("Example.csv");
-	int[] scoresT = Physics.getTests();
-	int[] scoresQ = Physics.getQuizzes();
-	int[] scoresP = Physics.getProjects();
-	int[] scoresH = Physics.getHomework();
-	String blah = (Physics.advise());
-
+	Subjects Physics =  new Subjects(0);
+	Physics.loadData(fileName,user);
+	Physics.fillSubject();
+	scoresT = toString(Physics.getTests());
+	scoresQ = toString(Physics.getQuizzes());
+	scoresP = toString(Physics.getProjects());
+	scoresH = toString(Physics.getHomework());
+	blah = (Physics.advise());
+	name = Physics.getName();
 		
 	//-----------------------------------------------------------------
 	this.setSize(1000, 800);
@@ -63,32 +86,26 @@ public class GUI extends JFrame {
 		
 	//------------------------
 	DefaultListModel<String> listModel1 = new DefaultListModel<>();
-	for (int i = 0; i < scoresT.length ; i++){
-	    String input = "" + scoresT[i];
-	    listModel1.addElement(input);
-	}
-		subList1  = new JList<>(listModel1);
+	listModel1.addElement(scoresT);
+	subList1  = new JList<>(listModel1);
+	subList1.setFont(new Font("Serif", Font.PLAIN, 20));
+	
+	DefaultListModel<String> listModel2 = new DefaultListModel<>();
+	listModel2.addElement(scoresQ);
+	subList2  = new JList<>(listModel2);
+	subList2.setFont(new Font("Serif", Font.PLAIN, 20));
+	
+	DefaultListModel<String> listModel3 = new DefaultListModel<>();
+	listModel3.addElement(scoresP);
+	subList3  = new JList<>(listModel3);
+	subList3.setFont(new Font("Serif", Font.PLAIN, 20));
+	
+	DefaultListModel<String> listModel4 = new DefaultListModel<>();
+	listModel4.addElement(scoresH);
+	subList4  = new JList<>(listModel4);
+	subList4.setFont(new Font("Serif", Font.PLAIN, 20));
 
-		DefaultListModel<String> listModel2 = new DefaultListModel<>();
-		for (int i = 0; i < scoresQ.length ; i++){
-		    String input = "" + scoresQ[i];
-		    listModel2.addElement(input);
-		}
-		subList2  = new JList<>(listModel2);
-
-		DefaultListModel<String> listModel3 = new DefaultListModel<>();
-		for (int i = 0; i < scoresP.length ; i++){
-		    String input = "" + scoresP[i];
-		    listModel3.addElement(input);
-		}
-		subList3  = new JList<>(listModel3);
-
-		DefaultListModel<String> listModel4 = new DefaultListModel<>();
-		for (int i = 0; i < scoresH.length ; i++){
-		    String input = "" + scoresH[i];
-		    listModel4.addElement(input);
-		}
-		subList4  = new JList<>(listModel4);
+	
         	//------------------------
 		sub = new JLabel("     Physics         ");
 		sub.setFont(new Font("Serif", Font.PLAIN, 30));
@@ -103,9 +120,8 @@ public class GUI extends JFrame {
 		portion4.setFont(new Font("Serif", Font.PLAIN, 25));
 		
 		advice = new JLabel(blah);
-
-
 		advice.setFont(new Font("Serif", Font.PLAIN, 15));
+		System.out.println(blah);
 
 
 		

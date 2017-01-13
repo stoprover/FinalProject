@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Subjects {
-    private int user;
+    private String user;
     private int subnum;
     private int goal;
     private String tests;
@@ -13,11 +13,11 @@ public class Subjects {
     private String homework;
     private String  breakdown;
     private String name;
-    private int[] b;
-    private int[] tG;
-    private int[] qG;
-    private int[] pG;
-    private int[] hG;
+    public int[] b;
+    public int[] tG;
+    public int[] qG;
+    public int[] pG;
+    public int[] hG;
     private double avg;
     private ArrayList<String> data;
     private String[] dta;
@@ -34,7 +34,7 @@ public class Subjects {
 		temp = qw.next();
 	  
 	    }
-	    
+	    user = temp;
 	    data.add(temp);
 	    while(qw.hasNext()){
 		data.add(qw.next());
@@ -55,7 +55,7 @@ public class Subjects {
     public Subjects(int x){
 	 data = new ArrayList<String>();
 	subnum = x;
-        goal = 95;
+        goal = 90;
 	tests= "";
 	quizzes = "";
 	projects= "";
@@ -298,13 +298,13 @@ public class Subjects {
 	String three = "" + (int) Math.round(threeTests());
 	
 	
-	String blah = "In order to reach your goal of " + goal + " you must score " + one + " \n on your next test, or score " + two + "  on your next two tests,\n or " + three + " on your next three tests.   " ;
+	String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score " + one + " \n on your next test, or score " + two + "  on your next two tests,\n or " + three + " on your next three tests.   " ;
 
 	return blah;
     }
 
     public static void main (String[]args) {
-	Subjects Physics =  new Subjects(1);
+	Subjects Physics =  new Subjects(0);
 	Physics.loadData("Example.csv", "Bob");
 
 	Physics.fillSubject();
