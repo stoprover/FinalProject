@@ -30,6 +30,7 @@ public class GUI extends JFrame {
     private String name;
     private ArrayList<String> data;
     private String[] subNames;
+    private int subnum;
  
     
     
@@ -51,7 +52,7 @@ public class GUI extends JFrame {
     private JList subList2;
     private JList subList3;
     private JList subList4;
-    private JLabel advice;
+    private JTextArea advice;
     
     private static String toString(int[] ary){
 	String x = " ";
@@ -86,7 +87,7 @@ public class GUI extends JFrame {
 		qw.next();
 		qw.next();
 		qw.next();
-			qw.next();
+		qw.next();
 		data.add(qw.next());
 		
 	    }
@@ -105,18 +106,18 @@ public class GUI extends JFrame {
 	
 
 	
-	Subjects Physics =  new Subjects(0);
-	Physics.loadData(fileName,user);
-	Physics.fillSubject();
-	scoresT = toString(Physics.getTests());
-	scoresQ = toString(Physics.getQuizzes());
-	scoresP = toString(Physics.getProjects());
-	scoresH = toString(Physics.getHomework());
-	blah = (Physics.advise());
-	name = Physics.getName();
+	Subjects nom =  new Subjects(0);
+	nom.loadData(fileName,user);
+	nom.fillSubject();
+	scoresT = toString(nom.getTests());
+	scoresQ = toString(nom.getQuizzes());
+	scoresP = toString(nom.getProjects());
+	scoresH = toString(nom.getHomework());
+	blah = nom.advise();
+	name = nom.getName();
 		
 	//-----------------------------------------------------------------
-	this.setSize(1300, 800);
+	this.setSize(700, 800);
         
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setTitle("Robo-Counselor: Grade Manager");
@@ -158,11 +159,7 @@ public class GUI extends JFrame {
 	System.out.println("You seleted the subject: " + selectedsub);
 //------------------------------------------------
 
-
-
-	
-        	//-------------------------------------------
-		sub = new JLabel("         " + selectedsub);
+		sub = new JLabel("     " + selectedsub);
 		sub.setFont(new Font("Serif", Font.PLAIN, 30));
 
 		portion1 = new JLabel("         Tests         ");
@@ -173,9 +170,17 @@ public class GUI extends JFrame {
 		portion3.setFont(new Font("Serif", Font.PLAIN, 25));
 		portion4 = new JLabel("         Homework         ");
 		portion4.setFont(new Font("Serif", Font.PLAIN, 25));
+
+		advice = new JTextArea(900, 300);
+		advice.setText(blah);
+		advice.setWrapStyleWord(true);
+		advice.setLineWrap(true);
+		advice.setOpaque(false);
+		advice.setEditable(false);
+		advice.setFocusable(false);
 		
-		advice = new JLabel(blah);
-		advice.setFont(new Font("Serif", Font.PLAIN, 18));
+		
+		advice.setFont(new Font("Lucida Handwriting", Font.PLAIN, 15));
 		System.out.println(blah);
 
 
@@ -194,3 +199,4 @@ public class GUI extends JFrame {
 	}
 
 }
+
