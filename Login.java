@@ -4,9 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Login{
-    String username;
-    String password;
-    //maybe private, maybe not
+    private String username;
+    private String password;
     public Login(String u, String p){
 	username = u;
 	password = p;
@@ -14,13 +13,8 @@ public class Login{
     public String readFile(String name){
 	try{
 	    Scanner s = new Scanner(new File (name));
-	    //goOn = true;//int i = 0;
 	    while (s.hasNextLine()){
-		/**i++;
-	    }
-	    for (int j = 0; j < i; j++){*/
 		String nextAcc = s.nextLine();
-		//System.out.println(nextAcc + "sep");
 		String nextUser = nextAcc.substring(0, nextAcc.indexOf(','));
 		if (username.equals("")){
 		    return "Empty User";
@@ -28,37 +22,19 @@ public class Login{
 		if (password.equals("")){
 		    return "Empty Pass";
 		}
-		//System.out.println("|" + nextUser + "|");
-		//System.out.println("|" + username + "|");
 		if (nextUser.equals(username)){
 		    String restOfAcc = nextAcc.substring(nextAcc.indexOf(',') + 1, nextAcc.length());
 		    String nextPass = restOfAcc.substring(0, restOfAcc.indexOf(','));
-		    //System.out.println("|" + nextPass + "|");
-		    //System.out.println("|" + password + "|");
 		    if (nextPass.equals(password)){
-			//goodPass = true;
-			//System.out.println("Success");
 			return "Success";
-			//goOn = false;
-			//j = i;
 		    }
 		    else {
-			/**goodPass = false;
-			System.out.println("Bad Pass");
-			//j = i;
-			goOn = false;*/
 			return "Bad Pass";
 		    }
 		}
 		if (!(s.hasNextLine())){
-		    /** goodUser = false;
-			System.out.println("Bad User");*/
 		    return "Bad User";
 		}
-		//return "Error";
-		    
-		//System.out.println(nextAcc);
-		//System.out.println(s.next());
 	    }
 	}catch(FileNotFoundException e){
 	    System.out.println("No such file");

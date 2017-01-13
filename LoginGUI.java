@@ -21,7 +21,7 @@ public class LoginGUI extends JFrame{
     private JTextField userLogInput = new JTextField(12);
     private JTextField passLogInput = new JTextField(12);
     //private JPasswordField passLogInput = new JPasswordField(12);
-    private JTextField logMessage = new JTextField(30);
+    private JLabel logMessage = new JLabel("Messages: ");
     private JButton toLogIn = new JButton ("Log in!");
     private JButton switchToSign = new JButton ("Sign up instead");
     private JLabel userSignLabel = new JLabel ("Username: ");
@@ -29,7 +29,7 @@ public class LoginGUI extends JFrame{
     private JTextField userSignInput = new JTextField(12);
     private JTextField passSignInput = new JTextField(12);
     // private JPasswordField passSignInput = new JPasswordField(12);
-    private JTextField signMessage = new JTextField(30);
+    private JLabel signMessage = new JLabel("Messages: ");
     private JButton toSignUp = new JButton("Sign up!");
     private JButton switchToLog = new JButton ("Log in instead");
     //Boolean goodPass;
@@ -82,22 +82,28 @@ public class LoginGUI extends JFrame{
 		    String results = backend.readFile("Example.csv");
 		    if (results.equals("Success")){
 			dispose();
-			new LoginGUI();//change this to Janices gui eventually
+			new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Bad Pass")){
-			logMessage.setText("The password inputted does not match this username.");
+			logMessage.setText("Messages: The password inputted does not match this username.");
+			panelLog.add(logMessage);
 		    }
 		    else if (results.equals("Bad User")){
-			logMessage.setText("There is no such user.");
+			logMessage.setText("Messages: There is no such user.");
+			panelLog.add(logMessage);
+
 		    }
 		    else if (results.equals("Empty User")){
-			logMessage.setText("Input your username.");
+			logMessage.setText("Messages: Input your username.");
+			panelLog.add(logMessage);
 		    }
 		    else if (results.equals("Empty Pass")){
-			logMessage.setText("Input your password.");
+			logMessage.setText("Messages: Input your password.");
+			panelLog.add(logMessage);
 		    }
 		    else{
-			logMessage.setText("Error. Please input a username and password.");
+			logMessage.setText("Messages: Error. Please input a username and password.");
+			panelLog.add(logMessage);
 		    }
 		    /**String apple = userLogInput.getText();
 		    userSignInput.setText(apple);
@@ -124,6 +130,8 @@ public class LoginGUI extends JFrame{
 
 	frame.add(panelBoth);
 	frame.setTitle("Log in or Sign up");
+	frame.setSize(800,900);
+	frame.setLocation(500,400);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.pack();
 	frame.setVisible(true);
