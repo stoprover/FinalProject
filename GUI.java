@@ -12,8 +12,11 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import java.awt.*;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 
 
@@ -25,12 +28,16 @@ public class GUI extends JFrame {
     private String scoresH;
     private String blah;
     private String name;
+    private ArrayList<String> data;
+    private String[] subNames;
+ 
+    
+    
 
 
     
+    
     public static void main(String[] args){
-	
-
 	new GUI("Example.csv", "Bob")	;
     }
 
@@ -46,21 +53,58 @@ public class GUI extends JFrame {
     private JList subList4;
     private JLabel advice;
     
- private static String toString(int[] ary){
-	   String x = " ";
-	   int y = 0;
-	     for(int i = 0; i < ary.length; i++){
-		 y++;
+    private static String toString(int[] ary){
+	String x = " ";
+	int y = 0;
+	for(int i = 0; i < ary.length; i++){
+	    y++;
 	 	
-	 	    x = x + "#" + y + ": " +  ary[i] + "    ";
+	    x = x + "#" + y + ": " +  ary[i] + "    ";
 	 	
 	 	
-	     }
-	     return x;
-	 }
+	}
+	return x;
+    }
    
     public GUI(String fileName, String user){
+	data = new ArrayList<String>();
+	subNames = new String[10];
+     	try{ Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
+	    //Add Subject names for the comboBox
+	    String temp = "";
+	    while (!temp.equals(user)){	
+		qw.nextLine();
+		temp = qw.next();	  
+	    }
+	    
+	    qw.next();
+	    qw.next();
+	    data.add(qw.next());
+	    for(int i = 0; i < 9; i++){
+		qw.next();
+		qw.next();
+		qw.next();
+		qw.next();
+		qw.next();
+			qw.next();
+		data.add(qw.next());
+		
+	    }
+		
+	       
+	    
+     	}catch(FileNotFoundException e){
+    	    System.out.println("Does not exist");
+    	    System.exit(1);
+     	}
 
+	for (int i = 0; i < data.size(); i++){
+	    subNames[i] = data.get(i);
+	}
+    
+	
+
+	
 	Subjects Physics =  new Subjects(0);
 	Physics.loadData(fileName,user);
 	Physics.fillSubject();
@@ -72,7 +116,7 @@ public class GUI extends JFrame {
 	name = Physics.getName();
 		
 	//-----------------------------------------------------------------
-	this.setSize(1000, 800);
+	this.setSize(1300, 800);
         
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setTitle("Robo-Counselor: Grade Manager");
@@ -105,9 +149,20 @@ public class GUI extends JFrame {
 	subList4  = new JList<>(listModel4);
 	subList4.setFont(new Font("Serif", Font.PLAIN, 20));
 
+	//-----------
+	JComboBox<String> subList = new JComboBox<>(subNames);
+	subList.setFont(new Font("Serif", Font.PLAIN, 18));
+
+	// get the selected item:
+	String selectedsub = (String) subList.getSelectedItem();
+	System.out.println("You seleted the subject: " + selectedsub);
+//------------------------------------------------
+
+
+
 	
-        	//------------------------
-		sub = new JLabel("     Physics         ");
+        	//-------------------------------------------
+		sub = new JLabel("         " + selectedsub);
 		sub.setFont(new Font("Serif", Font.PLAIN, 30));
 
 		portion1 = new JLabel("         Tests         ");
@@ -120,11 +175,11 @@ public class GUI extends JFrame {
 		portion4.setFont(new Font("Serif", Font.PLAIN, 25));
 		
 		advice = new JLabel(blah);
-		advice.setFont(new Font("Serif", Font.PLAIN, 15));
+		advice.setFont(new Font("Serif", Font.PLAIN, 18));
 		System.out.println(blah);
 
 
-		
+		panel.add(subList);
 		panel.add(sub);
 		panel.add(portion1);
 	        panel.add(subList1);
@@ -135,6 +190,7 @@ public class GUI extends JFrame {
 		panel.add(portion4);
 	        panel.add(subList4);
 		panel.add(advice);
+	
 	}
 
 }
