@@ -82,8 +82,8 @@ public class LoginGUI extends JFrame{
 		    String results = backend.readFile("Example.csv");
 		    if (results.equals("Success")){
 			dispose();
-			new LoginGUI();
-			//new GUI("Example.csv", username);
+			//new LoginGUI();
+			new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Bad Pass")){
 			logMessage.setText("Messages: The password inputted does not match this username.");
@@ -123,8 +123,8 @@ public class LoginGUI extends JFrame{
 		    String results = create.writeFile("Example.csv");
 		    if (results.equals("Success")){
 			dispose();
-			new LoginGUI();
-			//new GUI("Example.csv", username);
+			//new LoginGUI();
+			new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Empty User")){
 			signMessage.setText("Messages: Input a username.");
