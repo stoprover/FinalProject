@@ -4,8 +4,9 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.awt.event.*;
 
-public class GUI extends JFrame {
+public class GUI extends JFrame{
 
     //Really not necessary, but helps me keep track.
     private String scoresQ;
@@ -17,12 +18,26 @@ public class GUI extends JFrame {
     private ArrayList<String> data;
     private String[] subNames;
     private int subnum;
+   
  
     // MAIN
     public static void main(String[] args){
 	new GUI("Example.csv", "Bob")	;
     }
 
+
+    private void loader (int x, String fileName,String user) {
+	Subjects nom =  new Subjects(x);
+	nom.loadData(fileName,user);
+	nom.fillSubject();
+	scoresT = toString(nom.getTests());
+	scoresQ = toString(nom.getQuizzes());
+	scoresP = toString(nom.getProjects());
+	scoresH = toString(nom.getHomework());
+	blah = nom.advise();
+	name = nom.getName();
+    }
+    
     //Features 
     private JLabel sub;
     private JLabel portion2;
@@ -34,6 +49,7 @@ public class GUI extends JFrame {
     private JList subList3;
     private JList subList4;
     private JTextArea advice;
+    private JButton go;
     
     //toString for the grade data
     private static String toString(int[] ary){
@@ -66,6 +82,7 @@ public class GUI extends JFrame {
 	    qw.next();
 	    qw.next();
 	    data.add(qw.next());
+	 
 	    for(int i = 0; i < 9; i++){
 		qw.next();
 		qw.next();
@@ -74,6 +91,7 @@ public class GUI extends JFrame {
 		qw.next();
 		qw.next();
 		data.add(qw.next());
+		
 		
 	    }
 		
@@ -88,16 +106,7 @@ public class GUI extends JFrame {
 	    subNames[i] = data.get(i);
 	}
     
-	//Methods from Subjects.java
-	Subjects nom =  new Subjects(0);
-	nom.loadData(fileName,user);
-	nom.fillSubject();
-	scoresT = toString(nom.getTests());
-	scoresQ = toString(nom.getQuizzes());
-	scoresP = toString(nom.getProjects());
-	scoresH = toString(nom.getHomework());
-	blah = nom.advise();
-	name = nom.getName();
+	loader(0, fileName , user);
 		
 	//Dimensions
 	this.setSize(550, 650);
@@ -113,26 +122,13 @@ public class GUI extends JFrame {
 	this.add(panel);
 	this.setVisible(true);//opens window
 		
-	//Grade subLists
-	DefaultListModel<String> listModel1 = new DefaultListModel<>();
-	listModel1.addElement(scoresT);
-	subList1  = new JList<>(listModel1);
-	subList1.setFont(new Font("Serif", Font.PLAIN, 15));
+	//Grade Labels
+	JLabel G1 = new JLabel(scoresT);
+	JLabel G2 = new JLabel(scoresQ);
+	JLabel G3 = new JLabel(scoresP);
+	JLabel G4 = new JLabel(scoresH);
 	
-	DefaultListModel<String> listModel2 = new DefaultListModel<>();
-	listModel2.addElement(scoresQ);
-	subList2  = new JList<>(listModel2);
-	subList2.setFont(new Font("Serif", Font.PLAIN, 15));
-	
-	DefaultListModel<String> listModel3 = new DefaultListModel<>();
-	listModel3.addElement(scoresP);
-	subList3  = new JList<>(listModel3);
-	subList3.setFont(new Font("Serif", Font.PLAIN, 15));
-	
-	DefaultListModel<String> listModel4 = new DefaultListModel<>();
-	listModel4.addElement(scoresH);
-	subList4  = new JList<>(listModel4);
-	subList4.setFont(new Font("Serif", Font.PLAIN, 15));
+
 
 	//ComboBoxes
 	String[] function = new String[3];
@@ -173,19 +169,58 @@ public class GUI extends JFrame {
 	advice.setFont(new Font("Lucida Handwriting", Font.PLAIN, 15));
 	System.out.println(blah);
 
+
+	//JButton
+
+	go  = new JButton("Go!");
+	go.addActionListener(new ActionListener()
+	    {
+		public void actionPerformed(ActionEvent e)
+		{
+		    //Change Subject Name
+		    String selectedsub = (String) subList.getSelectedItem();
+		    System.out.println("You seleted the subject: " + selectedsub);
+		    sub.setText("     " + selectedsub);
+
+		    int index = -1;
+		    for (int i=0;i<subNames.length;i++) {
+			if (subNames[i].equals(selectedsub)) {
+			    index = i;
+			    break;
+			}
+		    }
+		    
+		    //Load Grade information
+		    
+		   loader(index, fileName, user);
+
+		   G2.setText(scoresQ);
+		   G1.setText(scoresT);
+		   G3.setText(scoresP);
+		   G4.setText(scoresH);
+		   advice.setText(blah);
+		   
+		   
+		   
+       
+		}
+	    });
+
 	//ADD STUFF
 	panel.add(funcList);
 	panel.add(subList);
+	panel.add(go);
 	panel.add(sub);
 	panel.add(portion1);
-	panel.add(subList1);
+	panel.add(G1);
 	panel.add(portion2);
-	panel.add(subList2);
+	panel.add(G2);
 	panel.add(portion3);
-	panel.add(subList3);
+	panel.add(G3);
 	panel.add(portion4);
-	panel.add(subList4);
+	panel.add(G4);
 	panel.add(advice);
+	
 	
     }
 
