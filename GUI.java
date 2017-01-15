@@ -140,10 +140,13 @@ public class GUI extends JFrame{
 
 		
 	//Dimensions
-	this.setSize(700, 800);
-        
-	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	this.setTitle("Robo-Counselor: Grade Manager");
+	// this.setSize(700, 800);
+	final JFrame frame = new JFrame("Robo-Counselor: Grade Manager");
+	frame.setSize(700, 800);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	// this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	JPanel panel = new JPanel();
 	//-----------------------------------------------------------------
 
@@ -271,6 +274,11 @@ public class GUI extends JFrame{
 	panel.add(G4);
 	panel.add(advice);
 	
+
+	JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.addTab("Get Advice", panel);
+	frame.getContentPane().add(tabbedPane);
+
 	
     }
 
