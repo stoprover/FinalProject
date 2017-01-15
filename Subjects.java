@@ -53,9 +53,11 @@ public class Subjects {
     	    System.out.println("Does not exist");
     	    System.exit(1);
      	}
-	
+	System.out.println(data.size());
 	for (int i = 0; i < data.size(); i++){
+
 	    dta[i] = data.get(i);
+	    
 	}
     
     }
@@ -72,7 +74,7 @@ public class Subjects {
 	homework = "";
 	breakdown = "";
 	name = "";
-	dta = new String[300];
+	dta = new String[355];
    
 	
 	}
