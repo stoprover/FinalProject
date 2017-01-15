@@ -82,7 +82,8 @@ public class LoginGUI extends JFrame{
 		    String results = backend.readFile("Example.csv");
 		    if (results.equals("Success")){
 			dispose();
-			new GUI("Example.csv", username);
+			new LoginGUI();
+			//new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Bad Pass")){
 			logMessage.setText("Messages: The password inputted does not match this username.");
@@ -102,7 +103,7 @@ public class LoginGUI extends JFrame{
 			panelLog.add(logMessage);
 		    }
 		    else{
-			logMessage.setText("Messages: Error. Please input a username and password.");
+			logMessage.setText("Messages: Error. Please input your username and password.");
 			panelLog.add(logMessage);
 		    }
 		    /**String apple = userLogInput.getText();
@@ -110,6 +111,38 @@ public class LoginGUI extends JFrame{
 		    dispose();//this should close the window, but that's a minor technicality
 		    new LoginGUI();//this shoudl actually be nwhatever Janice chooses to be her main GUI.*/
 
+		}
+	    });
+
+	toSignUp.addActionListener( new ActionListener () {
+		@Override
+		public void actionPerformed(ActionEvent arg0){
+		    String username = userSignInput.getText();
+		    String password = passSignInput.getText();
+		    CreateAcc create = new CreateAcc(username, password);
+		    String results = create.writeFile("Example.csv");
+		    if (results.equals("Success")){
+			dispose();
+			new LoginGUI();//"Example.csv", username);
+		    }
+		    else if (results.equals("Empty User")){
+			signMessage.setText("Messages: Input a username.");
+			panelSign.add(signMessage);
+		    }
+		    else if (results.equals("Empty Pass")){
+			signMessage.setText("Messages: Input a password.");
+			panelSign.add(signMessage);
+		    }
+		    else if (results.equals("User Used")){
+			signMessage.setText("Messages: Sorry, that username is already in use.");
+			panelSign.add(signMessage);
+		    }
+		    else{
+			signMessage.setText("Messages: Error. Please input a username and password.");
+			panelSign.add(signMessage);
+		    }
+		    //cl.show(panelBoth, "1");
+		    //this.show(panelBoth, "1");
 		}
 	    });
 
