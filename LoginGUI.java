@@ -82,11 +82,11 @@ public class LoginGUI extends JFrame{
 		    String results = backend.readFile("Example.csv");
 		    if (results.equals("Success")){
 			dispose();
-<<<<<<< HEAD
+
 			//new LoginGUI();
-=======
+
 			new LoginGUI();
->>>>>>> 1b2db78e56fb4db2a044d5aa87784348984d63ca
+
 			new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Bad Pass")){

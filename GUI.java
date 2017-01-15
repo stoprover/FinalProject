@@ -49,6 +49,7 @@ public class GUI extends JFrame{
 	    nom.nextTest();
 	    blah = nom.advise();
 	}catch (NumberFormatException e){
+	    Subjects nom =  new Subjects(x);
 	    nom.loadData(fileName,user);
 	    nom.fillSubject();
 	    scoresT = "";
