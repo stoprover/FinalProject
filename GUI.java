@@ -18,6 +18,8 @@ public class GUI extends JFrame{
     private ArrayList<String> data;
     private String[] subNames;
     private int subnum;
+    
+    
    
  
     // MAIN
@@ -54,12 +56,17 @@ public class GUI extends JFrame{
     private JLabel portion1;
     private JLabel portion3;
     private JLabel portion4;
+    private JComboBox<String> subList;
     private JList subList1;
     private JList subList2;
     private JList subList3;
     private JList subList4;
     private JTextArea advice;
     private JButton go;
+    private JLabel G1;
+    private JLabel G2;
+    private JLabel G3;
+    private JLabel G4;
     
     //toString for the grade data
     private static String toString(int[] ary){
@@ -132,13 +139,13 @@ public class GUI extends JFrame{
 	this.setVisible(true);//opens window
 		
 	//Grade Labels
-	JLabel G1 = new JLabel("      " + scoresT);
+	 G1 = new JLabel("      " + scoresT);
 	G1.setFont(new Font("Serif", Font.PLAIN, 15));
-	JLabel G2 = new JLabel("      " + scoresQ);
+	 G2 = new JLabel("      " + scoresQ);
 	G2.setFont(new Font("Serif", Font.PLAIN, 15));
-	JLabel G3 = new JLabel("      " + scoresP);
+	 G3 = new JLabel("      " + scoresP);
 	G3.setFont(new Font("Serif", Font.PLAIN, 15));
-	JLabel G4 = new JLabel("      " + scoresH);
+	 G4 = new JLabel("      " + scoresH);
 	G4.setFont(new Font("Serif", Font.PLAIN, 15));
 
 
@@ -152,7 +159,7 @@ public class GUI extends JFrame{
 	String selectedfunc = (String) funcList.getSelectedItem();
 	System.out.println("Welcome to " + selectedfunc);
 
-	JComboBox<String> subList = new JComboBox<>(subNames);
+	 subList = new JComboBox<>(subNames);
 	subList.setFont(new Font("Serif", Font.PLAIN, 18));
        	String selectedsub = (String) subList.getSelectedItem();
 	System.out.println("You seleted the subject: " + selectedsub);
