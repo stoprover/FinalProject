@@ -87,6 +87,7 @@ public class LoginGUI extends JFrame{
 			dispose();
 			//new LoginGUI();
 			//new LoginGUI();
+			//new LoginGUI();
 			new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Bad Pass")){
