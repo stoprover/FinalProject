@@ -29,26 +29,38 @@ public class GUI extends JFrame{
 
 
     private void loader (int x, String fileName,String user) {
-	Subjects nom =  new Subjects(x);
-	nom.loadData(fileName,user);
-	nom.fillSubject();
-	scoresT = toString(nom.getTests());
-	scoresQ = toString(nom.getQuizzes());
-	scoresP = toString(nom.getProjects());
-	scoresH = toString(nom.getHomework());
-	nom.nextTest();
-	nom.twoTests();
-	nom.threeTests();
-	nom.getBreakdown();
-	nom.getTests();
-	nom.getQuizzes();
-	nom.getProjects();
-	nom.getHomework();
-	nom.average();
-	nom.nextTest();
-	blah = nom.advise();
-	
+	try{
+	    Subjects nom =  new Subjects(x);
+	    nom.loadData(fileName,user);
+	    nom.fillSubject();
+	    scoresT = toString(nom.getTests());
+	    scoresQ = toString(nom.getQuizzes());
+	    scoresP = toString(nom.getProjects());
+	    scoresH = toString(nom.getHomework());
+	    nom.nextTest();
+	    nom.twoTests();
+	    nom.threeTests();
+	    nom.getBreakdown();
+	    nom.getTests();
+	    nom.getQuizzes();
+	    nom.getProjects();
+	    nom.getHomework();
+	    nom.average();
+	    nom.nextTest();
+	    blah = nom.advise();
+	}catch (NumberFormatException e){
+	    nom.loadData(fileName,user);
+	    nom.fillSubject();
+	    scoresT = "";
+	    scoresQ = "";
+	    scoresP = "";
+	    scoresH = "";
+	    blah = "";
+	}
     }
+	
+	
+
     
     //Features 
     private JLabel sub;
@@ -83,7 +95,7 @@ public class GUI extends JFrame{
     public GUI(String fileName, String user){
 	// Get Subjects
 	data = new ArrayList<String>();
-	;
+	
      	try{ Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
 	    //Add Subject names for the comboBox
 	    String temp = "";
@@ -104,8 +116,6 @@ public class GUI extends JFrame{
 		data.add(qw.next());		
 	    }
 
-	    
-	  
      	}catch(FileNotFoundException e){
     	    System.out.println("File does not exist");
     	    System.exit(1);
@@ -121,8 +131,10 @@ public class GUI extends JFrame{
 	    subNames[i] = data.get(i);
 	}
 	data.trimToSize();
-	
+
+	//------------------------
 	loader(0, fileName , user);
+
 		
 	//Dimensions
 	this.setSize(700, 800);
@@ -139,13 +151,13 @@ public class GUI extends JFrame{
 	this.setVisible(true);//opens window
 		
 	//Grade Labels
-	 G1 = new JLabel("      " + scoresT);
+	G1 = new JLabel("      " + scoresT);
 	G1.setFont(new Font("Serif", Font.PLAIN, 15));
-	 G2 = new JLabel("      " + scoresQ);
+	G2 = new JLabel("      " + scoresQ);
 	G2.setFont(new Font("Serif", Font.PLAIN, 15));
-	 G3 = new JLabel("      " + scoresP);
+	G3 = new JLabel("      " + scoresP);
 	G3.setFont(new Font("Serif", Font.PLAIN, 15));
-	 G4 = new JLabel("      " + scoresH);
+	G4 = new JLabel("      " + scoresH);
 	G4.setFont(new Font("Serif", Font.PLAIN, 15));
 
 
@@ -159,7 +171,7 @@ public class GUI extends JFrame{
 	String selectedfunc = (String) funcList.getSelectedItem();
 	System.out.println("Welcome to " + selectedfunc);
 
-	 subList = new JComboBox<>(subNames);
+	subList = new JComboBox<>(subNames);
 	subList.setFont(new Font("Serif", Font.PLAIN, 18));
        	String selectedsub = (String) subList.getSelectedItem();
 	System.out.println("You seleted the subject: " + selectedsub);

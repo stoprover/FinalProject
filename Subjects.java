@@ -72,7 +72,7 @@ public class Subjects {
 	homework = "";
 	breakdown = "";
 	name = "";
-	dta = new String[200];
+	dta = new String[300];
    
 	
 	}
