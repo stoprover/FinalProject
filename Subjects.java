@@ -53,9 +53,11 @@ public class Subjects {
     	    System.out.println("Does not exist");
     	    System.exit(1);
      	}
-	
+	System.out.println(data.size());
 	for (int i = 0; i < data.size(); i++){
+
 	    dta[i] = data.get(i);
+	    
 	}
     
     }
@@ -66,6 +68,7 @@ public class Subjects {
 	 data = new ArrayList<String>();
 	subnum = x;
         goal = 0;
+<<<<<<< HEAD
 	tests= "";
 	quizzes = "";
 	projects= "";
@@ -408,31 +411,42 @@ public class Subjects {
 	 data = new ArrayList<String>();
 	subnum = x;
         goal = 90;
+=======
+>>>>>>> master
 	tests= "";
 	quizzes = "";
 	projects= "";
 	homework = "";
 	breakdown = "";
 	name = "";
-	dta = new String[200];
+	dta = new String[355];
    
 	
 	}
 
     public void fillSubject(){
-	int start = 2 + (7*subnum);
-	String[] subject = new String[7];
-	for (int i = 0; i < 7; i++){
-	    subject[i] = dta[start];
-	    start++;
+	try{
+	    int start = 2 + (7*subnum);
+	    String[] subject = new String[7];
+	    for (int i = 0; i < 7; i++){
+		subject[i] = dta[start];
+		start++;
+	    }
+	    goal = Integer.parseInt(subject[0]);
+	    name = subject[1];
+	    tests = subject[3];
+	    quizzes = subject[4] ;
+	    projects = subject[5];
+	    homework = subject[6];
+	    breakdown = subject[2];
+	} catch(NumberFormatException e){
+    	    System.out.println("");
+    	    
+     	}
+	
+	for (int i = 0; i < data.size(); i++){
+	    dta[i] = data.get(i);
 	}
-	goal = Integer.parseInt(subject[0]);
-	name = subject[1];
-	tests = subject[3];
-	quizzes = subject[4] ;
-	projects = subject[5];
-	homework = subject[6];
-	breakdown = subject[2];
     }
 
 
@@ -645,11 +659,10 @@ public class Subjects {
 
     
     public String advise() {
-	String one = "" + (int)Math.round(nextTest());
-	String two = "" + (int)Math.round(twoTests());
-	String three = "" + (int) Math.round(threeTests());
-	
-	
+	one = (int)(Math.round(nextTest()));
+	two = (int)(Math.round(twoTests()));
+	three = (int)(Math.round(threeTests()));
+
 	String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score " + one + " \n on your next test, or score " + two + "  on your next two tests,\n or " + three + " on your next three tests.   " ;
 
 	return blah;

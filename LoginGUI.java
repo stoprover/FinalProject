@@ -36,8 +36,12 @@ public class LoginGUI extends JFrame{
     CardLayout cl = new CardLayout();
 
     public LoginGUI(){
+<<<<<<< HEAD
 	
 	//Establishes the Card Layout, adds text fields, buttons, etc., to the individual cards.
+=======
+	//add buttons and textfields and other stuff to each individual card
+>>>>>>> master
 	panelBoth.setLayout(cl);
 	panelLog.add(userLogLabel);
 	panelLog.add(userLogInput);
@@ -55,14 +59,23 @@ public class LoginGUI extends JFrame{
 	panelSign.add(signMessage);
 	//panelLog.setBackground(Color.BLUE);
 	//panelSign.setBackground(Color.GREEN);
+<<<<<<< HEAD
 
 	//Adds the two cards to the main panel.
+=======
+	
+	//Adding the two cards to the panel
+>>>>>>> master
 	panelBoth.add(panelLog, "1");
 	panelBoth.add(panelSign, "2");
 	cl.show(panelBoth, "1");
 	//	this.show(panelBoth, "1");
 
+<<<<<<< HEAD
 	//What to do if log in is attempted
+=======
+	//Actions to be performed when someone tries to log in
+>>>>>>> master
 	toLogIn.addActionListener (new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -90,6 +103,11 @@ public class LoginGUI extends JFrame{
 			panelLog.add(logMessage);
 			dispose();
 			//new LoginGUI();
+<<<<<<< HEAD
+=======
+			//new LoginGUI();
+			//new LoginGUI();
+>>>>>>> master
 			new GUI("Example.csv", username);
 		    }
 
@@ -125,7 +143,11 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+<<<<<<< HEAD
 	//What to do if sign up is attempted
+=======
+	//Actions to be performed when someone tries to sign up
+>>>>>>> master
 	toSignUp.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -169,7 +191,11 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+<<<<<<< HEAD
 	//Go from Log in card to Sign up card.
+=======
+	//Actions to be performed when someone tries to switch between login cards and sign up cards, or vice versa
+>>>>>>> master
 	switchToSign.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -187,7 +213,11 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+<<<<<<< HEAD
 	//Add all this to the frame
+=======
+	//Adding stuff to the frame
+>>>>>>> master
 	frame.add(panelBoth);
 	frame.setTitle("Log in or Sign up");
 	frame.setSize(800,900);
