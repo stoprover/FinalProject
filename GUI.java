@@ -148,7 +148,7 @@ public class GUI extends JFrame{
 	// this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	JPanel panel = new JPanel();
-	//-----------------------------------------------------------------
+	//-----------------------------------------------------------------panel begins
 
 	//GRID LAYOUT
 	panel.setLayout(new GridLayout(0,1,4,4));
@@ -251,15 +251,12 @@ public class GUI extends JFrame{
 		    portion2.setText("         Quizzes         ");
 		    portion3.setText("         Projects         ");
 		    portion4.setText("         Homework         ");
-		    
-
 		    }
-		
 		}
 	    });
 	    
 	
-	//ADD STUFF
+	//ADD STUFF into Panel
 	panel.add(funcList);
 	panel.add(subList);
 	panel.add(go);
@@ -273,11 +270,82 @@ public class GUI extends JFrame{
 	panel.add(portion4);
 	panel.add(G4);
 	panel.add(advice);
-	
+	//-----------------------------------------------------Panel ends
+	//-----------------------------------------------------Panel2 begins
 
+	JPanel panel2 = new JPanel();
+	panel2.setLayout(new GridLayout(0,1,4,4));
+      	this.add(panel2);
+	this.setVisible(true);
+
+
+
+	//----------------------------------------------------Panel2 ends
+	//----------------------------------------------------Panel3 begins
+
+	JPanel panel3 = new JPanel();
+	panel3.setLayout(new GridLayout(0,1,4,4));
+      	this.add(panel3);
+	this.setVisible(true);
+	
+	////Spinners
+	SpinnerNumberModel gradeT = new SpinnerNumberModel(90, 65, 105, 1 );
+	JSpinner spinnerT = new JSpinner(gradeT);
+	spinnerT.setFont(new Font("Serif", Font.PLAIN, 18));
+	SpinnerNumberModel gradeQ = new SpinnerNumberModel(90, 65, 105, 1 );
+	JSpinner spinnerQ = new JSpinner(gradeQ);
+	spinnerQ.setFont(new Font("Serif", Font.PLAIN, 18));
+	SpinnerNumberModel gradeP = new SpinnerNumberModel(90, 65, 105, 1 );
+	JSpinner spinnerP = new JSpinner(gradeP);
+	spinnerP.setFont(new Font("Serif", Font.PLAIN, 18));
+	SpinnerNumberModel gradeH = new SpinnerNumberModel(90, 65, 105, 1 );
+	JSpinner spinnerH = new JSpinner(gradeH);
+	spinnerH.setFont(new Font("Serif", Font.PLAIN, 18));
+
+	//Labels
+	JLabel changeT = new JLabel("Add a Test");
+	changeT.setFont(new Font("Serif", Font.PLAIN, 15));
+	JLabel changeQ = new JLabel("Add a Quiz");
+	changeQ.setFont(new Font("Serif", Font.PLAIN, 15));
+	JLabel changeP = new JLabel("Add a Project");
+	changeP.setFont(new Font("Serif", Font.PLAIN, 15));
+	JLabel changeH = new JLabel("Add a Homework");
+	changeH.setFont(new Font("Serif", Font.PLAIN, 15));
+
+	//Buttons
+	JButton addT  = new JButton("Add");
+	JButton addQ  = new JButton("Add");
+	JButton addP  = new JButton("Add");
+	JButton addH  = new JButton("Add");
+
+	//ComboBoxes
+	JComboBox<String> subsList = new JComboBox<>(subNames);
+	subsList.setFont(new Font("Serif", Font.PLAIN, 18));
+       	String subselected = (String) subsList.getSelectedItem();
+	System.out.println("You seleted the subject: " + subselected);
+	    
+	panel2.add(subsList);
+	panel2.add(changeT);
+	panel2.add(spinnerT);
+	panel2.add(addT);
+	panel2.add(changeQ);
+	panel2.add(spinnerQ);
+	panel2.add(addQ);
+	panel2.add(changeP);
+	panel2.add(spinnerP);
+	panel2.add(addP);
+	panel2.add(changeH);
+	panel2.add(spinnerH);
+	panel2.add(addH);
+
+	//----------------------------------------------------Panel3 ends
+	//TABS-----------------------------------------------------------------------
 	JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.addTab("Get Advice", panel);
+	tabbedPane.addTab("Manage your information", panel2);
+	tabbedPane.addTab("Add new Subject", panel3);
 	frame.getContentPane().add(tabbedPane);
+	
 
 	
     }
