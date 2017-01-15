@@ -29,8 +29,9 @@ public class GUI extends JFrame{
 
 
     private void loader (int x, String fileName,String user) {
+	Subjects nom = new Subjects(x);
 	try{
-	    Subjects nom =  new Subjects(x);
+	    //Subjects nom =  new Subjects(x);
 	    nom.loadData(fileName,user);
 	    nom.fillSubject();
 	    scoresT = toString(nom.getTests());
@@ -92,7 +93,8 @@ public class GUI extends JFrame{
     }
    
     // GUI STUFF
-    public GUI(String fileName, String user){
+    //public GUI(String fileName, String user){
+    public GUI(final String fileName, final String user){
 	// Get Subjects
 	data = new ArrayList<String>();
 	
@@ -166,7 +168,8 @@ public class GUI extends JFrame{
 	function[0] = "Grade Tracker";
 	function[1] = "Sleep Tracker";
 	function[2]= "Activity Tracker";
-	JComboBox<String> funcList = new JComboBox<>(function);
+	final JComboBox<String> funcList = new JComboBox<>(function);
+	//JComboBox<String> funcList = new JComboBox<>(function);
 	funcList.setFont(new Font("Serif", Font.PLAIN, 18));
 	String selectedfunc = (String) funcList.getSelectedItem();
 	System.out.println("Welcome to " + selectedfunc);

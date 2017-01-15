@@ -39,6 +39,7 @@ public class LoginGUI extends JFrame{
     CardLayout cl = new CardLayout();
 
     public LoginGUI(){
+	//add buttons and textfields and other stuff to each individual card
 	panelBoth.setLayout(cl);
 	panelLog.add(userLogLabel);
 	panelLog.add(userLogInput);
@@ -56,12 +57,14 @@ public class LoginGUI extends JFrame{
 	panelSign.add(signMessage);
 	//panelLog.setBackground(Color.BLUE);
 	//panelSign.setBackground(Color.GREEN);
-
+	
+	//Adding the two cards to the panel
 	panelBoth.add(panelLog, "1");
 	panelBoth.add(panelSign, "2");
 	cl.show(panelBoth, "1");
 	//	this.show(panelBoth, "1");
 
+	//Actions to be performed when someone tries to log in
 	toLogIn.addActionListener (new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -82,11 +85,8 @@ public class LoginGUI extends JFrame{
 		    String results = backend.readFile("Example.csv");
 		    if (results.equals("Success")){
 			dispose();
-<<<<<<< HEAD
 			//new LoginGUI();
-=======
-			new LoginGUI();
->>>>>>> 1b2db78e56fb4db2a044d5aa87784348984d63ca
+			//new LoginGUI();
 			new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Bad Pass")){
@@ -118,6 +118,7 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+	//Actions to be performed when someone tries to sign up
 	toSignUp.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -151,6 +152,7 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+	//Actions to be performed when someone tries to switch between login cards and sign up cards, or vice versa
 	switchToSign.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -166,6 +168,7 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+	//Adding stuff to the frame
 	frame.add(panelBoth);
 	frame.setTitle("Log in or Sign up");
 	frame.setSize(800,900);
