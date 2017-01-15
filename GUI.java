@@ -278,16 +278,6 @@ public class GUI extends JFrame{
       	this.add(panel2);
 	this.setVisible(true);
 
-
-
-	//----------------------------------------------------Panel2 ends
-	//----------------------------------------------------Panel3 begins
-
-	JPanel panel3 = new JPanel();
-	panel3.setLayout(new GridLayout(0,1,4,4));
-      	this.add(panel3);
-	this.setVisible(true);
-	
 	////Spinners
 	SpinnerNumberModel gradeT = new SpinnerNumberModel(90, 65, 105, 1 );
 	JSpinner spinnerT = new JSpinner(gradeT);
@@ -338,6 +328,18 @@ public class GUI extends JFrame{
 	panel2.add(spinnerH);
 	panel2.add(addH);
 
+	//----------------------------------------------------Panel2 ends
+	//----------------------------------------------------Panel3 begins
+
+	JPanel panel3 = new JPanel();
+	panel3.setLayout(new GridLayout(0,1,4,4));
+      	this.add(panel3);
+	this.setVisible(true);
+
+
+	
+
+
 	//----------------------------------------------------Panel3 ends
 	//TABS-----------------------------------------------------------------------
 	JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -351,5 +353,3 @@ public class GUI extends JFrame{
     }
 
 }
-
-//Ref:::https://examples.javacodegeeks.com/desktop-java/swing/jtabbedpane/create-jtabbedpane-example/
