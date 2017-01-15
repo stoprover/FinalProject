@@ -17,7 +17,7 @@ public class InputGrades {
     
 
     public InputGrades(String fileName, String username, int subNum){
-    
+     data = new ArrayList<String>();
      	try{ Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
 	    // Add data
 	    String temp = "";
@@ -61,12 +61,12 @@ public class InputGrades {
     }
 
 
-    public void adder(int val, int type, int subNum, String username, String fileName) throws IOException{
+    public void adder(int val, int type, int subNum, String username, String fileName) {
 	String valStr = val + ".";
 	String temp = "";
 	try{
 	    Scanner xw = new Scanner(new File (fileName)).useDelimiter(",");
-	    Writer wr = null;
+	    Writer wr = Writer();
 	    while (!temp.equals(username)){
 		xw.nextLine();
 		temp = xw.next();
@@ -110,7 +110,7 @@ public class InputGrades {
 		xw.next(); 
 		homework += valStr;
 		wr.write(homework);}
-	}catch(FileNotFoundException e){
+	}catch(IOException ioe){
 	    System.out.println("Does not exist");
     	    System.exit(1);
 	}
