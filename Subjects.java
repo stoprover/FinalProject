@@ -32,14 +32,11 @@ public class Subjects {
     public void loadData(String fileName, String username){
     
      	try{ Scanner qw = new Scanner(new File (fileName)).useDelimiter(",");
-
-
 	    // Add data
 	    String temp = "";
 	    while (!temp.equals(username)){
 		qw.nextLine();
 		temp = qw.next();
-	  
 	    }
 	    user = temp;
 	    data.add(temp);
@@ -47,15 +44,14 @@ public class Subjects {
 		data.add(qw.next());	
 	    }
 
-	    
-	    
      	}catch(FileNotFoundException e){
     	    System.out.println("Does not exist");
     	    System.exit(1);
      	}
 	System.out.println(data.size());
+	dta = new String[data.size()];
 	for (int i = 0; i < data.size(); i++){
-
+	    
 	    dta[i] = data.get(i);
 	    
 	}
@@ -74,9 +70,7 @@ public class Subjects {
 	homework = "";
 	breakdown = "";
 	name = "";
-	dta = new String[355];
-   
-	
+
 	}
 
     public void fillSubject(){
@@ -88,30 +82,44 @@ public class Subjects {
 		start++;
 	    }
 	    goal = Integer.parseInt(subject[0]);
+	    
 	    name = subject[1];
-	    tests = subject[3];
-	    quizzes = subject[4] ;
-	    projects = subject[5];
-	    homework = subject[6];
+	    
+	    if (!(subject[3].equals(""))){
+		tests = subject[3];}
+	    else { tests = "100."; }
+
+	    if (!(subject[4].equals(""))){
+		quizzes = subject[4];}
+	    else { quizzes = "100.";}
+
+	    if (!(subject[5].equals(""))){		
+		projects = subject[5];}
+	    else{ projects = "100.";}
+
+	    if (!subject[6].equals("")){
+		homework = subject[6];}
+	    else{ homework = "100.";}
+	    
 	    breakdown = subject[2];
 	} catch(NumberFormatException e){
     	    System.out.println("");
     	    
      	}
 	
-	for (int i = 0; i < data.size(); i++){
-	    dta[i] = data.get(i);
-	}
+	// for (int i = 0; i < data.size(); i++){
+	//     dta[i] = data.get(i);
     }
+    
 
 
     public int getGoal() {
 	return goal;
     }
     
-	public String  getName() {
-	    return name;
-	}
+    public String  getName() {
+	return name;
+    }
 
  
 
