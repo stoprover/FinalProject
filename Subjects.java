@@ -29,6 +29,9 @@ public class Subjects {
     private int four;
     private int five;
     private int six;
+    private int uno;
+    private int dos;
+    private int numb;
     private ArrayList<String> data;
     private String[] dta;
   
@@ -309,6 +312,62 @@ public class Subjects {
 	    
     }
 
+     public double combo1() {
+	 double termq = (double)(b[1]);
+	 double quizz = (((100 + (findAvg(qG) * qG.length))/(1+qG.length))*(termq/100))-((findAvg(qG) * b[1])/100);
+	 double needed  = goal - avg - quizz;
+	 double avgT = findAvg(tG);
+	 double terms = tG.length;
+	 double total = terms * avgT;
+	 double res = (((avgT +(needed * terms)) * (terms+1)) - total);
+	 if ( res < 100) {
+	     num = 1;
+	     return res;}
+	 
+	 res = ((((avgT +(needed * terms)) * (terms+2)) - total)/2);
+	 if ( res < 100) {
+	     num = 2;
+	     return res;}
+
+	 
+	 res = ((((avgT +(needed * terms)) * (terms+3)) - total)/3);
+	 if ( res < 100) {
+	     num = 3;
+	     return res;}
+
+	      
+	 return res;
+    }
+
+     public double combo2() {
+	 double termq = (double)(b[1]);
+	 double quizz = (((200 + (findAvg(qG) * qG.length))/(2+qG.length))*(termq/100))-((findAvg(qG) * b[1])/100);
+	 double needed  = goal - avg - quizz;
+	 double avgT = findAvg(tG);
+	 double terms = tG.length;
+	 double total = terms * avgT;
+	 double res = (((avgT +(needed * terms)) * (terms+1)) - total);
+	 if ( res < 100) {
+	     numb = 1;
+	     return res;}
+	 
+	 res = ((((avgT +(needed * terms)) * (terms+2)) - total)/2);
+	 if ( res < 100) {
+	     numb = 2;
+	     return res;}
+
+	 
+	 res = ((((avgT +(needed * terms)) * (terms+3)) - total)/3);
+	 if ( res < 100) {
+	     numb = 3;
+	     return res;}
+
+
+
+	 return res;	       
+	    
+    }
+
     public double twoTests() {
 	double needed  = goal - avg;
 	double avgT = findAvg(tG);
@@ -365,6 +424,8 @@ public class Subjects {
 	five = (int)(Math.round(fiveTests()));
 	six = (int)(Math.round(sixTests()));
 	finalAvg = (int)(Math.round(avg));
+	uno = (int)(Math.round(combo1()));
+	dos = (int)(Math.round(combo2()));
 
 	if (one < 65){
 	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". You are on the right track to earning your goal of " + goal + ". Keep it up!";
@@ -374,24 +435,34 @@ public class Subjects {
 	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + one + " \n on your next test.";
 	    return blah;
 	}
+
+	else if (uno <= 100){
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + uno  + " \n on your next " + num + " test(s) and 100% on your next quiz";
+	    return blah;
+	}
+		    
 	else if (two<= 100) {
 	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + two + " \n on your two tests.";
 	    return blah;
 	}
+	else if (dos <= 100){
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + dos  + " \n on your next " + numb + " test(s) and 100% on your next two quizzes";
+	    return blah;
+	}
 	else if (three <= 100) {
-	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + three + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + three + " \n on your three tests.";
 	    return blah;
 	}
 	else if (four <= 100) {
-	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + four + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + four + " \n on your four tests.";
 	    return blah;
 	}
 	else if (five <= 100) {
-	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + five + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + five + " \n on your five tests.";
 	    return blah;
 	}
 	else if (six <= 100) {
-	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least" + six + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least" + six + " \n on your two six tests.";
 	    return blah;
 	}
 	else {
