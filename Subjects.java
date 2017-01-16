@@ -19,12 +19,18 @@ public class Subjects {
     public int[] pG;
     public int[] hG;
     private double avg;
-    private ArrayList<String> data;
-    private String[] dta;
+    private int num;
+    private int result;
     private String[] subject;
     private int one;
     private int two;
     private int three;
+    private int four;
+    private int five;
+    private int six;
+    private ArrayList<String> data;
+    private String[] dta;
+  
     
     
 
@@ -320,15 +326,79 @@ public class Subjects {
 	return ((((avgT +(needed * terms)) * (terms+3)) - total)/3);
     }
 
+     public double fourTests() {
+	double needed  = goal - avg;
+	double avgT = findAvg(tG);
+	double terms = tG.length;
+	double total = terms * avgT;
+	
+	return ((((avgT +(needed * terms)) * (terms+4)) - total)/4);
+    }
+
+     public double fiveTests() {
+	double needed  = goal - avg;
+	double avgT = findAvg(tG);
+	double terms = tG.length;
+	double total = terms * avgT;
+	
+	return ((((avgT +(needed * terms)) * (terms+5)) - total)/5);
+    }
+
+     public double sixTests() {
+	double needed  = goal - avg;
+	double avgT = findAvg(tG);
+	double terms = tG.length;
+	double total = terms * avgT;
+	
+	return ((((avgT +(needed * terms)) * (terms+6)) - total)/6);
+    }
+
+
+    
     
     public String advise() {
 	one = (int)(Math.round(nextTest()));
 	two = (int)(Math.round(twoTests()));
 	three = (int)(Math.round(threeTests()));
+	four = (int)(Math.round(fourTests()));
+	five = (int)(Math.round(fiveTests()));
+	six = (int)(Math.round(sixTests()));
 
-	String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score " + one + " \n on your next test, or score " + two + "  on your next two tests,\n or " + three + " on your next three tests.   " ;
+	if (one < 65){
+	    String blah = "Hi " + user + "! " +"You are on the right track to earning your goal of " + goal + ". Keep it up!";
+	    return blah;
+	}	    
+	else if (one <= 100){
+	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + one + " \n on your next test.";
+	    return blah;
+	}
+	else if (two<= 100) {
+	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + two + " \n on your two tests.";
+	    return blah;
+	}
+	else if (three <= 100) {
+	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + three + " \n on your two tests.";
+	    return blah;
+	}
+	else if (four <= 100) {
+	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + four + " \n on your two tests.";
+	    return blah;
+	}
+	else if (five <= 100) {
+	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + five + " \n on your two tests.";
+	    return blah;
+	}
+	else if (six <= 100) {
+	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least" + six + " \n on your two tests.";
+	    return blah;
+	}
+	else {
+	    String blah = "Hi " + user + "! " +"It seems your goal of " + goal + " is very ambitious, but I am afraid that it will be difficult to reach this goal. You can change your goal to be more realistic. If you feel that you still want to reach this goal, you may need to have a conversation with your " + name + " teacher.";
+	    return blah;}
+	
+	
 
-	return blah;
+	
     }
 
     public static void main (String[]args) {
@@ -352,6 +422,7 @@ public class Subjects {
     
 
 }
+
 	
 	
 
