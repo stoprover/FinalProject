@@ -9,9 +9,10 @@ import javax.swing.*;
 
 public class LoginGUI extends JFrame{
     //some standardization: sign up & sign in refer to creating an account, while log in refers to already having one and accessing it
-    //to-do's: if there is already such a username as being inputted to signup, forbid it
+    //to-do's:
     //possibility: make login buttons switch to a third card: janices.
     //change passLogInput and passSignInput to JPasswordField, rather than JTextField, and fix related methods in getting their info.
+    
     private JFrame frame = new JFrame("LogSign");
     private JPanel panelBoth = new JPanel();
     private JPanel panelLog = new JPanel();
@@ -32,14 +33,15 @@ public class LoginGUI extends JFrame{
     private JLabel signMessage = new JLabel("Messages: ");
     private JButton toSignUp = new JButton("Sign up!");
     private JButton switchToLog = new JButton ("Log in instead");
-    //Boolean goodPass;
-    //Boolean goodUser;
-    //String username;
-    //String password;
     CardLayout cl = new CardLayout();
 
     public LoginGUI(){
+
+	
+	//Establishes the Card Layout, adds text fields, buttons, etc., to the individual cards.
+
 	//add buttons and textfields and other stuff to each individual card
+
 	panelBoth.setLayout(cl);
 	panelLog.add(userLogLabel);
 	panelLog.add(userLogInput);
@@ -57,17 +59,27 @@ public class LoginGUI extends JFrame{
 	panelSign.add(signMessage);
 	//panelLog.setBackground(Color.BLUE);
 	//panelSign.setBackground(Color.GREEN);
+
+
+	//Adds the two cards to the main panel.
+
 	
 	//Adding the two cards to the panel
+
 	panelBoth.add(panelLog, "1");
 	panelBoth.add(panelSign, "2");
 	cl.show(panelBoth, "1");
 	//	this.show(panelBoth, "1");
 
+
+	//What to do if log in is attempted
+
 	//Actions to be performed when someone tries to log in
+
 	toLogIn.addActionListener (new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
+		    //Gets data inputted and data from Example.csv to later be compared.
 		    String username = userLogInput.getText();
 		    String password = passLogInput.getText();
 		    if (username.contains("\n")){
@@ -105,15 +117,23 @@ public class LoginGUI extends JFrame{
 		    if (password.length() == 0){
 			logMessage.setText("Input password");
 			}*/
+		    
 		    Login backend = new Login(username, password);
 		    String results = backend.readFile("Example.csv");
+
+		    //Username and password match those in Example.csv
 		    if (results.equals("Success")){
+			logMessage.setText("Messages: Success!");
+			panelLog.add(logMessage);
 			dispose();
 			//new LoginGUI();
 			//new LoginGUI();
 			//new LoginGUI();
+
 			new GUI("Example.csv", username);
 		    }
+
+		    //Username or password do not match those in Example.csv
 		    else if (results.equals("Bad Pass")){
 			logMessage.setText("Messages: The password inputted does not match this username.");
 			panelLog.add(logMessage);
@@ -123,6 +143,8 @@ public class LoginGUI extends JFrame{
 			panelLog.add(logMessage);
 
 		    }
+
+		    //No username or password inputted
 		    else if (results.equals("Empty User")){
 			logMessage.setText("Messages: Input your username.");
 			panelLog.add(logMessage);
@@ -143,10 +165,15 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+
+	//What to do if sign up is attempted
 	//Actions to be performed when someone tries to sign up
+
 	toSignUp.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
+
+		    //Gets data inputted and data from Example.csv
 		    String username = userSignInput.getText();
 		    String password = passSignInput.getText();
 		    if (username.contains("\n")){
@@ -177,11 +204,22 @@ public class LoginGUI extends JFrame{
 		       signMessage.setText("Messages: */
 		    CreateAcc create = new CreateAcc(username, password);
 		    String results = create.writeFile("Example.csv");
+
+		    //Username is acceptable
 		    if (results.equals("Success")){
+			signMessage.setText("Messages: Success!");
+			panelSign.add(signMessage);
 			dispose();
-			new LoginGUI();
+
+			new LoginGUI();//temporary
 			//new GUI("Example.csv", username);
+
+			new LoginGUI();
+			new GUI("Example.csv", username);
+
 		    }
+
+		    //No username or password inputted
 		    else if (results.equals("Empty User")){
 			signMessage.setText("Messages: Input a username.");
 			panelSign.add(signMessage);
@@ -190,6 +228,8 @@ public class LoginGUI extends JFrame{
 			signMessage.setText("Messages: Input a password.");
 			panelSign.add(signMessage);
 		    }
+
+		    //Inputted username already in use
 		    else if (results.equals("User Used")){
 			signMessage.setText("Messages: Sorry, that username is already in use.");
 			panelSign.add(signMessage);
@@ -203,7 +243,11 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+
+	//Go from Log in card to Sign up card.
+
 	//Actions to be performed when someone tries to switch between login cards and sign up cards, or vice versa
+
 	switchToSign.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -211,6 +255,8 @@ public class LoginGUI extends JFrame{
 		    //this.show(panelBoth, "2");
 		}
 	    });
+
+	//Go from Sign up card to log in card.
 	switchToLog.addActionListener( new ActionListener () {
 		@Override
 		public void actionPerformed(ActionEvent arg0){
@@ -219,7 +265,11 @@ public class LoginGUI extends JFrame{
 		}
 	    });
 
+
+	//Add all this to the frame
+
 	//Adding stuff to the frame
+
 	frame.add(panelBoth);
 	frame.setTitle("Log in or Sign up");
 	frame.setSize(800,900);

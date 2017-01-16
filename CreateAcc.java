@@ -3,11 +3,17 @@ import java.io.*;
 public class CreateAcc{
     private String username;
     private String password;
+    
+    //Constructor, sets values for username and password
     public CreateAcc(String u, String p){
 	username = u;
 	password = p;
     }
-    public String writeFile(String name){//)throws IOException{
+
+    //Writing to a file
+    public String writeFile(String name){
+
+	//Making sure username and password are of acceptable length (for now, last two will be used rather than first two).
 	/**if (username.length() < 8){
 	    return "User Short";
 	}
@@ -20,14 +26,26 @@ public class CreateAcc{
 	if (password.equals("")){
 	    return "Empty Pass";
 	}
+
+	//Checking if the input username already exists
 	Login attempt = new Login(username, password);
+	
+	//Creates the account by adding data to Example.csv
 	if (attempt.readFile("Example.csv").equals("Bad User")){
 	    Writer writer = null;
 	    try{
-		writer = new FileWriter(name, true);	    
+
 		writer.write("\n" + username + "," + password + ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+
+		writer.write("\n" + username + "," + password + ",0, , , , , , ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+
+		writer.write("\n" + username + "," + password + ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+
+		writer.write("\n" + username + "," + password + ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+
 	    //w.flush();
 	    //w.close();
+
 	    }catch(IOException e){
 		System.err.println("Exception thrown: " + e);
 		e.printStackTrace();
@@ -43,6 +61,8 @@ public class CreateAcc{
 	    }
 	    return "Success";
 	}
+	
+	//Returns message if the username already exists.
 	else{
 	    return "User Used";
 	}
@@ -54,37 +74,3 @@ public class CreateAcc{
 	//d.writeFile("passwords.csv");
     }
 }
-		
-/**package textfiles;
-
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.IOException;
-
-public class CreateAcc{
-    private String username;
-    private String password;
-    public CreateAcc(String u, String p){
-	username = u;
-	password = p;
-    }
-    public void writeFile(String name, String text) throws IOException{
-	//try{
-	    FileWriter w = new FileWriter(name);
-
-	    w.write(text);
-	    w.close();
-    }
-	    /**
-	    PrintWriter pl = new PrintWriter(w);
-	    pl.printf("%s" + "%n", text);
-	    pl.close();
-	}catch(IOException e){
-	    System.out.println("idk");
-	}
-	}*/
-/**public static void main (String[]args){
-	CreateAcc c = new CreateAcc("a", "b");
-	c.writeFile("Example.csv", "\na");
-    }
-    }*/
