@@ -37,12 +37,16 @@ public class CreateAcc{
 		writer = new FileWriter(name, true);	    
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		writer.write("\n" + username + "," + password + ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
 =======
 		writer.write("\n" + username + "," + password + ",0, , , , , , ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
 =======
 		writer.write("\n" + username + "," + password + ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
 >>>>>>> d400c89b6ea006c0ad8270a7e37f7e4a2dd3f445
+=======
+		writer.write("\n" + username + "," + password + ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+>>>>>>> steven-subjects
 	    //w.flush();
 	    //w.close();
 >>>>>>> master
