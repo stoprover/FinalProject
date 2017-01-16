@@ -556,8 +556,15 @@ public class Subjects {
     	    System.out.println("Does not exist");
     	    System.exit(1);
      	}
+<<<<<<< HEAD
 	
 	for (int i = 0; i < data.size() - 1; i++){
+=======
+	System.out.println(data.size());
+	dta = new String[data.size()];
+	for (int i = 0; i < data.size(); i++){
+
+>>>>>>> steven-subjects
 	    dta[i] = data.get(i);
 	}
     
@@ -577,7 +584,7 @@ public class Subjects {
 	homework = "";
 	breakdown = "";
 	name = "";
-	dta = new String[355];
+	//dta = new String[355];
    
 	
 	}
