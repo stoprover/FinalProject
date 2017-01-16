@@ -70,6 +70,30 @@ public class LoginGUI extends JFrame{
 		public void actionPerformed(ActionEvent arg0){
 		    String username = userLogInput.getText();
 		    String password = passLogInput.getText();
+		    if (username.contains("\n")){
+			logMessage.setText("Messages: username cannot contain the new line character.");
+			panelLog.add(logMessage);
+			return;
+		    }
+		    for (int i = 0; i < username.length(); i++){
+			if (username.charAt(i) == 44){
+			    logMessage.setText("Messages: username cannot contain the comma character.");
+			    panelLog.add(logMessage);
+			    return;
+			}
+		    }
+		    if (password.contains("\n")){
+			logMessage.setText("Messages: password cannot contain the new line character.");
+			panelLog.add(logMessage);
+			return;
+		    }
+		    for (int i = 0; i < password.length(); i++){
+			if (password.charAt(i) == 44){
+			    logMessage.setText("Messages: password cannot contain the comma character.");
+			    panelLog.add(logMessage);
+			    return;
+			}
+		    }
 		    /**int i = 0;
 		    String password = "";
 		    while(i < passLogInput.length){
@@ -125,6 +149,32 @@ public class LoginGUI extends JFrame{
 		public void actionPerformed(ActionEvent arg0){
 		    String username = userSignInput.getText();
 		    String password = passSignInput.getText();
+		    if (username.contains("\n")){
+			signMessage.setText("Messages: username cannot contain the new line character.");
+			panelSign.add(signMessage);
+			return;
+		    }
+		    for (int i = 0; i < username.length(); i++){
+			if (username.charAt(i) == 44){
+			    signMessage.setText("Messages: username cannot contain the comma character.");
+			    panelSign.add(signMessage);
+			    return;
+			}
+		    }
+		    if (password.contains("\n")){
+			signMessage.setText("Messages: password cannot contain the new line character.");
+			panelSign.add(signMessage);
+			return;
+		    }
+		    for (int i = 0; i < password.length(); i++){
+			if (password.charAt(i) == 44){
+			    signMessage.setText("Messages: password cannot contain the comma character.");
+			    panelSign.add(signMessage);
+			    return;
+			}
+		    }
+		    /**if (username.contains(",")){
+		       signMessage.setText("Messages: */
 		    CreateAcc create = new CreateAcc(username, password);
 		    String results = create.writeFile("Example.csv");
 		    if (results.equals("Success")){

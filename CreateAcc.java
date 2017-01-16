@@ -25,7 +25,7 @@ public class CreateAcc{
 	    Writer writer = null;
 	    try{
 		writer = new FileWriter(name, true);	    
-		writer.write("\n" + username + "," + password + ",0, , , , , , ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
+		writer.write("\n" + username + "," + password + ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
 	    //w.flush();
 	    //w.close();
 	    }catch(IOException e){
