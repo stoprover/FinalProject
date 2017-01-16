@@ -10,6 +10,7 @@ public class Login{
 	username = u;
 	password = p;
     }
+    //comma user and comma pass and same for sign up!!!!!
     public String readFile(String name){
 	try{
 	    Scanner s = new Scanner(new File (name));
