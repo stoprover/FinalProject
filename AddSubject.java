@@ -13,17 +13,19 @@ public class AddSubject{
     private String fileName;
     private String username;
     private String restOfAcc;
-    // private String newString;
+
+    //sets fileName and username variables to be used throughout rest of class
     public AddSubject(String f, String u){
 	fileName = f;
 	username = u;
     }
+
+    //cruft that i will leave for now in case it will be needed in the future
     public String getOtherInfo(){
 	try{
 	    Scanner s = new Scanner(new File (fileName));
 	    while(s.hasNextLine()){
 		String nextAcc = s.nextLine();
-		//System.out.println(nextAcc);
 		String nextUser = nextAcc.substring(0, nextAcc.indexOf(','));
 		if (nextUser.equals(username)){
 		    restOfAcc = nextAcc.substring(nextAcc.indexOf(',') + 1, nextAcc.length());
@@ -31,9 +33,6 @@ public class AddSubject{
 		    System.out.println(restOfAcc);
 		    return "AccFound";
 		}
-		/**else{
-		    return "AccError";
-		    }*/
 	    }
 	}catch(FileNotFoundException e){
 	    System.out.println("No such file");
@@ -41,6 +40,8 @@ public class AddSubject{
 	}
 	return "AccError";
     }
+
+    //Also cruft
     /**public boolean canBeAdded(){
 	System.out.println(restOfAcc.charAt((restOfAcc.lastIndexOf(',') - 1)));
 	if (restOfAcc.charAt((restOfAcc.lastIndexOf(',') - 1)) == 44){
@@ -53,28 +54,35 @@ public class AddSubject{
     //get all the info about the class from GUI. Process test/quiz/proj/hw info into correct format
     //find location to add this stuff in
     //add in correct order.
-    //there may need to be some way to create the array that is the input for process, as well as string for breakdown 
+    //there may need to be some way to create the array that is the input for process, as well as string for breakdown
+
+    //processes a string array into the correct format that Tests, HW, Projects, and Quizzes need for Example.csv
     public String process(String[]grades){
 	String sum = "";
 	for (int i = 0; i < grades.length; i++){
 	    sum += grades[i] + ".";
 	}
 	return sum;
-	//blah;
     }
+
+    //Might also be cruft
     public int findWhere(){
 	return restOfAcc.indexOf(",,,,,,,"); 
-    }//goal, brkdwn, subname would be variables created in gui from input.
-    public String createClass(String goal, String SubName, String BrkDwn, String[]T, String[]Q, String[]P, String[]H){
-	//if (this.canBeAdded()){
-	    String newString = goal + "," + SubName + "," + BrkDwn + "," + process(T) + "," + process(Q) + "," + process(P) + "," + process(H) + ",";
-	    //System.out.println(newString);
-	    return newString;
-	    //}
-	    //else{
-	    //return "";
-	    // }
     }
+
+    //goal, brkdwn, subname would be variables created in gui from input
+    //Goal might be determined the way add a new test/quiz/etc. is determined (the number with arrows, idk what that's called.
+    //BrkDwn would be determined like goal, but with a set of four of those things
+    //Subname would be a testfield
+    //I think BrkDwn might also need to be processed, possibly use the process function above but idk
+    //the gui can have something so that if tests, quizzes, etc. are not added, there will just be one 100 inputted for that category.
+    //thisfunction properly formats all the data so that it may be added.
+    public String createClass(String goal, String SubName, String BrkDwn, String[]T, String[]Q, String[]P, String[]H){
+	    String newString = goal + "," + SubName + "," + BrkDwn + "," + process(T) + "," + process(Q) + "," + process(P) + "," + process(H) + ",";
+	    return newString;
+    }
+
+    //this function adds the data to Example.csv
     public void addClass(String goal, String SubName, String BrkDwn, String[]T, String[]Q, String[]P, String[]H){
 	String tempFileName = "temp_Example.csv";
 
