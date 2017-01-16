@@ -369,7 +369,7 @@ public class GUI extends JFrame{
 	pEnt.setFont(new Font("Serif", Font.PLAIN, 18));
 	JLabel hEnt = new JLabel("Value of homework (in percent)");
 	hEnt.setFont(new Font("Serif", Font.PLAIN, 18));
-	JLabel errMsg = new JLabel("Your breakdown does not add up to 100%");
+	JLabel errMsg = new JLabel("");
 	errMsg.setFont(new Font("Serif", Font.PLAIN, 18));
 	
 	
@@ -403,6 +403,41 @@ public class GUI extends JFrame{
 
 	JButton addAll  = new JButton("Add New Subject");
 	addAll.setFont(new Font("Serif", Font.PLAIN, 15));
+	//----------------------Button does stuff yay!!!
+	
+
+	addAll.addActionListener(new ActionListener()
+	    {
+		public void actionPerformed(ActionEvent e)
+		{
+		    String newname = (String) inputName.getText();
+		    int goalVal = (Integer) inputGoal.getValue();
+		    int testVal = (Integer) inputT.getValue();
+		    int quizVal = (Integer) inputQ.getValue();
+		    int projVal = (Integer) inputP.getValue();
+		    int homeVal = (Integer) inputH.getValue();
+		    int total = testVal + quizVal + projVal + homeVal;
+		    if (total != 100){
+			errMsg.setText("Your breakdown does not add up to 100%");
+		    }
+		    else if (newname.equals("")){
+			errMsg.setText("Please enter a subject Name!");
+		    }
+		    else{
+			errMsg.setText("Success! Your subject has been added.");
+			String brkdwn = "" + testVal + "." + "" + quizVal + "." + "" + projVal + "." + "" + homeVal + ".";
+			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
+		    }
+			
+		    
+		    
+		}
+	    });
+
+
+
+
+	
 
 	// make sure the breakdown = 100
 
