@@ -163,8 +163,13 @@ public class LoginGUI extends JFrame{
 			signMessage.setText("Messages: Success!");
 			panelSign.add(signMessage);
 			dispose();
+<<<<<<< HEAD
 			new LoginGUI();//temporary
 			//new GUI("Example.csv", username);
+=======
+			new LoginGUI();
+			new GUI("Example.csv", username);
+>>>>>>> d400c89b6ea006c0ad8270a7e37f7e4a2dd3f445
 		    }
 
 		    //No username or password inputted
