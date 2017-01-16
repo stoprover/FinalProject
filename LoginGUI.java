@@ -130,7 +130,7 @@ public class LoginGUI extends JFrame{
 		    if (results.equals("Success")){
 			dispose();
 			new LoginGUI();
-			//new GUI("Example.csv", username);
+			new GUI("Example.csv", username);
 		    }
 		    else if (results.equals("Empty User")){
 			signMessage.setText("Messages: Input a username.");
