@@ -279,6 +279,9 @@ public class GUI extends JFrame{
 	this.setVisible(true);
 
 	////Spinners
+	SpinnerNumberModel goalCh = new SpinnerNumberModel(90, 65, 105, 1 );
+	JSpinner spinnerGoal = new JSpinner(goalCh);
+	spinnerGoal.setFont(new Font("Serif", Font.PLAIN, 18));
 	SpinnerNumberModel gradeT = new SpinnerNumberModel(90, 65, 105, 1 );
 	JSpinner spinnerT = new JSpinner(gradeT);
 	spinnerT.setFont(new Font("Serif", Font.PLAIN, 18));
@@ -293,6 +296,8 @@ public class GUI extends JFrame{
 	spinnerH.setFont(new Font("Serif", Font.PLAIN, 18));
 
 	//Labels
+	JLabel changeGoal = new JLabel("Change your Goal");
+	changeGoal.setFont(new Font("Serif", Font.PLAIN, 15));
 	JLabel changeT = new JLabel("Add a Test");
 	changeT.setFont(new Font("Serif", Font.PLAIN, 15));
 	JLabel changeQ = new JLabel("Add a Quiz");
@@ -303,11 +308,17 @@ public class GUI extends JFrame{
 	changeH.setFont(new Font("Serif", Font.PLAIN, 15));
 
 	//Buttons
+	JButton addGoal = new JButton ("Change my goal");
+	addGoal.setFont(new Font("Serif", Font.PLAIN, 15));
 	JButton addT  = new JButton("Add");
+	addT.setFont(new Font("Serif", Font.PLAIN, 15));
 	JButton addQ  = new JButton("Add");
+	addQ.setFont(new Font("Serif", Font.PLAIN, 15));
 	JButton addP  = new JButton("Add");
+	addP.setFont(new Font("Serif", Font.PLAIN, 15));
 	JButton addH  = new JButton("Add");
-
+	addH.setFont(new Font("Serif", Font.PLAIN, 15));
+	
 	//ComboBoxes
 	JComboBox<String> subsList = new JComboBox<>(subNames);
 	subsList.setFont(new Font("Serif", Font.PLAIN, 18));
@@ -315,6 +326,9 @@ public class GUI extends JFrame{
 	System.out.println("You seleted the subject: " + subselected);
 	    
 	panel2.add(subsList);
+	panel2.add(changeGoal);
+	panel2.add(spinnerGoal);
+	panel2.add(addGoal);
 	panel2.add(changeT);
 	panel2.add(spinnerT);
 	panel2.add(addT);
@@ -335,7 +349,81 @@ public class GUI extends JFrame{
 	panel3.setLayout(new GridLayout(0,1,4,4));
       	this.add(panel3);
 	this.setVisible(true);
+	
+	JLabel addWel = new JLabel("Hello, here you can add a new Subject to manage!");
+	addWel.setFont(new Font("Lucida Handwriting", Font.PLAIN, 18));
+	JLabel addName = new JLabel("Type in the name of your new subject below");
+	addName.setFont(new Font("Serif", Font.PLAIN, 18));
+	
+        JTextField inputName = new JTextField();
+	inputName.setFont(new Font("Serif", Font.PLAIN, 18));
+	JLabel goalEnt = new JLabel("Type in the goal average of your new subject below");
+	goalEnt.setFont(new Font("Serif", Font.PLAIN, 18));
+	JLabel insEnt = new JLabel("Type in the breakdown of your new subject below");
+	insEnt.setFont(new Font("Serif", Font.PLAIN, 18));
+	JLabel tEnt = new JLabel("Value of tests (in percent)");
+	tEnt.setFont(new Font("Serif", Font.PLAIN, 18));
+	JLabel qEnt = new JLabel("Value of quizzes (in percent)");
+	qEnt.setFont(new Font("Serif", Font.PLAIN, 18));
+	JLabel pEnt = new JLabel("Value of projects (in percent)");
+	pEnt.setFont(new Font("Serif", Font.PLAIN, 18));
+	JLabel hEnt = new JLabel("Value of homework (in percent)");
+	hEnt.setFont(new Font("Serif", Font.PLAIN, 18));
+	JLabel errMsg = new JLabel("Your breakdown does not add up to 100%");
+	errMsg.setFont(new Font("Serif", Font.PLAIN, 18));
+	
+	
+        
+	SpinnerNumberModel goalT = new SpinnerNumberModel(90, 0, 100, 1 );
+	JSpinner inputGoal = new JSpinner(goalT);
+	int goalVal = (Integer) inputGoal.getValue();
+	inputGoal.setFont(new Font("Serif", Font.PLAIN, 18));
+	
+	SpinnerNumberModel gT = new SpinnerNumberModel(60, 0, 100, 5 );
+	JSpinner inputT = new JSpinner(gT);
+	inputT.setFont(new Font("Serif", Font.PLAIN, 18));
+	int testVal = (Integer) inputT.getValue();
+	
+	SpinnerNumberModel gQ = new SpinnerNumberModel(30, 0, 100, 5 );
+	JSpinner inputQ = new JSpinner(gQ);
+	inputQ.setFont(new Font("Serif", Font.PLAIN, 18));
+	int quizVal = (Integer) inputQ.getValue();
 
+	
+	SpinnerNumberModel gP = new SpinnerNumberModel(5, 0, 100, 5 );
+	JSpinner inputP = new JSpinner(gP);
+	inputP.setFont(new Font("Serif", Font.PLAIN, 18));
+	int projVal = (Integer) inputP.getValue();
+
+	
+	SpinnerNumberModel gH = new SpinnerNumberModel(5, 0, 100, 5 );
+	JSpinner inputH = new JSpinner(gH);
+	inputH.setFont(new Font("Serif", Font.PLAIN, 18));
+	int homeVal = (Integer) inputH.getValue();
+
+	JButton addAll  = new JButton("Add New Subject");
+	addAll.setFont(new Font("Serif", Font.PLAIN, 15));
+
+	// make sure the breakdown = 100
+
+	panel3.add(addWel);
+	panel3.add(addName);
+	panel3.add(inputName);
+	panel3.add(goalEnt);
+	panel3.add(inputGoal);
+	panel3.add(tEnt);
+	panel3.add(inputT);
+	panel3.add(qEnt);
+	panel3.add(inputQ);
+	panel3.add(pEnt);
+	panel3.add(inputP);
+	panel3.add(hEnt);
+	panel3.add(inputH);
+	panel3.add(addAll);
+	panel3.add(errMsg);
+	
+       
+	
 
 	
 
