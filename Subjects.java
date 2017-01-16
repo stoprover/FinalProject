@@ -19,6 +19,7 @@ public class Subjects {
     public int[] pG;
     public int[] hG;
     private double avg;
+    private int finalAvg;
     private int num;
     private int result;
     private String[] subject;
@@ -54,7 +55,7 @@ public class Subjects {
     	    System.out.println("Does not exist");
     	    System.exit(1);
      	}
-	System.out.println(data.size());
+	
 	dta = new String[data.size()];
 	for (int i = 0; i < data.size(); i++){
 	    
@@ -363,37 +364,38 @@ public class Subjects {
 	four = (int)(Math.round(fourTests()));
 	five = (int)(Math.round(fiveTests()));
 	six = (int)(Math.round(sixTests()));
+	finalAvg = (int)(Math.round(avg));
 
 	if (one < 65){
-	    String blah = "Hi " + user + "! " +"You are on the right track to earning your goal of " + goal + ". Keep it up!";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". You are on the right track to earning your goal of " + goal + ". Keep it up!";
 	    return blah;
 	}	    
 	else if (one <= 100){
-	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + one + " \n on your next test.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + one + " \n on your next test.";
 	    return blah;
 	}
 	else if (two<= 100) {
-	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + two + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + two + " \n on your two tests.";
 	    return blah;
 	}
 	else if (three <= 100) {
-	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + three + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + three + " \n on your two tests.";
 	    return blah;
 	}
 	else if (four <= 100) {
-	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + four + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + four + " \n on your two tests.";
 	    return blah;
 	}
 	else if (five <= 100) {
-	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least " + five + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + five + " \n on your two tests.";
 	    return blah;
 	}
 	else if (six <= 100) {
-	    String blah = "Hi " + user + "! " +"In order to reach your goal of " + goal + " you must score at least" + six + " \n on your two tests.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least" + six + " \n on your two tests.";
 	    return blah;
 	}
 	else {
-	    String blah = "Hi " + user + "! " +"It seems your goal of " + goal + " is very ambitious, but I am afraid that it will be difficult to reach this goal. You can change your goal to be more realistic. If you feel that you still want to reach this goal, you may need to have a conversation with your " + name + " teacher.";
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". It seems your goal of " + goal + " is very ambitious, but I am afraid that it will be difficult to reach this goal. You can change your goal to be more realistic. If you feel that you still want to reach this goal, you may need to have a conversation with your " + name + " teacher.";
 	    return blah;}
 	
 	
