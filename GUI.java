@@ -425,8 +425,13 @@ public class GUI extends JFrame{
 			errMsg.setText("Please enter a subject Name!");
 		    }
 		    else{
+			String BD = testVal + "." + quizVal + "." + projVal + "." + homeVal + ".";
+			AddSubject a = new AddSubject("Example.csv", "Bob");
+			String[]T = new String[0];
+			a.addClass(goalVal, newname, BD, T, T, T, T);
 			errMsg.setText("Success! Your subject has been added.");
 			String brkdwn = "" + testVal + "." + "" + quizVal + "." + "" + projVal + "." + "" + homeVal + ".";
+			
 			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
 		    }
 			
