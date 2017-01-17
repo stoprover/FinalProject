@@ -2,7 +2,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
-import java.io.File;
+import java.io.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.awt.event.*;
@@ -82,6 +82,7 @@ public class GUI extends JFrame{
     private JLabel G2;
     private JLabel G3;
     private JLabel G4;
+    private JButton addAll;
     
     //toString for the grade data
     private static String toString(int[] ary){
@@ -95,7 +96,7 @@ public class GUI extends JFrame{
     }
    
     // GUI STUFF
-    //public GUI(String fileName, String user){
+   
     public GUI(final String fileName, final String user){
 	// Get Subjects
 	data = new ArrayList<String>();
@@ -402,7 +403,7 @@ public class GUI extends JFrame{
 	inputH.setFont(new Font("Serif", Font.PLAIN, 18));
 	int homeVal = (Integer) inputH.getValue();
 
-	JButton addAll  = new JButton("Add New Subject");
+	addAll  = new JButton("Add New Subject");
 	addAll.setFont(new Font("Serif", Font.PLAIN, 15));
 	//----------------------Button does stuff yay!!!
 	
@@ -411,13 +412,16 @@ public class GUI extends JFrame{
 	    {
 		public void actionPerformed(ActionEvent e)
 		{
+		    
 		    String newname = (String) inputName.getText();
 		    int goalVal = (Integer) inputGoal.getValue();
 		    int testVal = (Integer) inputT.getValue();
 		    int quizVal = (Integer) inputQ.getValue();
 		    int projVal = (Integer) inputP.getValue();
 		    int homeVal = (Integer) inputH.getValue();
+		    String goVal = "" + goalVal;
 		    int total = testVal + quizVal + projVal + homeVal;
+		    String brkdwn = "" + testVal + "." + "" + quizVal + "." + "" + projVal + "." + "" + homeVal + ".";
 		    if (total != 100){
 			errMsg.setText("Your breakdown does not add up to 100%");
 		    }
@@ -425,9 +429,31 @@ public class GUI extends JFrame{
 			errMsg.setText("Please enter a subject Name!");
 		    }
 		    else{
+			AddSubject a = new AddSubject(fileName , user);
+			String[]T = new String[0];
+			String[]Q = new String[0];
+			String[]P = new String[0];
+			String[]H = new String[0];
+			//System.out.println(a.createClass(goVal, newname, brkdwn, T, Q, P, H));			
+			a.addClass(goVal, newname, brkdwn, T, Q, P, H);
 			errMsg.setText("Success! Your subject has been added.");
-			String brkdwn = "" + testVal + "." + "" + quizVal + "." + "" + projVal + "." + "" + homeVal + ".";
 			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
+
+
+			//reset the comboboxes
+		
+			    //
+			    //
+			    //
+			    //
+			    //
+			    //
+			    //
+			    //
+			    
+				
+		
+			
 		    }
 			
 		    
