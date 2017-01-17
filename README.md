@@ -26,6 +26,7 @@ UNRESOLVED BUGS:
 ----------------------------------------------------------------------
 - Accounts that are created cannot be used, since "GUI.java" cannot open a new window for an account without subjects in it, and new accounts do not have any subjects in them. The backend in order to create an account, "CreateAcc.java", works correctly, and if one were to input an allowed username and password, this data would be added to the CSV file storing data for all accounts (this file is called "Example.csv"). In addition, a new window to log in or sign up would open, showing that this backend does work.
 - Error messages for logging in and signing up are cut off due to the size of the window. We were unable to change the size of the window through the code. Thus, it is necessary to physically make the GUI window larger or to maximize it in order for these error messages to not be cut off.
+- Passwords inputted when attempting to log in or sign up are not in JPasswordFields due to a lack of time to code this feature.
 - Sleep Tracker and Activity Tracker in Tab 1 are features that we did not have time to code.
 - Adding new Subject information is not available (Tab 2 is essentially not working) since "InputGrades.java" has some problems and is incomplete due to a lack of time.
 - Tab 3 is set up with error messages and features in the GUI. A backend (called "AddSubject.java") to add a subject also works effectively, but there are problems in creating a new subject in "Example.csv". "AddSubject.java", when run in terminal with its preexisting main, produces effective results, modifying "Example.csv" by creating a temporary CSV file with preexisting info from "Example.csv" and the new subject info, deleting the original "Example.csv", and renaming the temporary CSV file to "Example.csv" (the same as the original file). However, this does not occur when run through GUI. Though the GUI can give correct error messages (see above in WORKING FEATURES), and creates a temporary CSV file with the new subject information, it does not delete or replace the old CSV file, despite approximately 8 hours of debugging and testing by both Janice and Steven to try to make it do so.
@@ -59,8 +60,11 @@ Here's a guide to seeing how individual parts of our code work.
 HOW TO USE OUR PROGRAM:
 --------------------------------------------------------------------
 There are two working accounts:
+<br>
         (username) (password)
+	<br>
       - konstans, weshallpass
+      <br>
       - Bob, 1234567890
 
 
