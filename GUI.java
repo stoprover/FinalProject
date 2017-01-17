@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
@@ -20,15 +19,10 @@ public class GUI extends JFrame{
     private String[] subNames;
     private int subnum;
     
-    
-   
- 
     // MAIN
     public static void main(String[] args){
 	new GUI("Example.csv", "Bob")	;
     }
-
-
     private void loader (int x, String fileName,String user) {
 	Subjects nom = new Subjects(x);
 	try{
@@ -385,7 +379,6 @@ public class GUI extends JFrame{
 	final JLabel errMsg = new JLabel("");
 	errMsg.setFont(new Font("Serif", Font.PLAIN, 18));
 	
-	
         
 	SpinnerNumberModel goalT = new SpinnerNumberModel(90, 0, 100, 1 );
 	final JSpinner inputGoal = new JSpinner(goalT);
@@ -443,15 +436,8 @@ public class GUI extends JFrame{
 			newfiller ( fileName,  user, goVal, newname, brkdwn);
 			errMsg.setText("Success! Your subject has been added.");
 			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
-
-
-				
-		
-			
+	
 		    }
-			
-		    
-		    
 		}
 	    });
 
@@ -478,13 +464,7 @@ public class GUI extends JFrame{
 	panel3.add(addAll);
 	panel3.add(errMsg);
 	
-       
-	
-
-	
-
-
-	//----------------------------------------------------Panel3 ends
+       	//----------------------------------------------------Panel3 ends
 	//TABS-----------------------------------------------------------------------
 	JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.addTab("Get Advice", panel);
@@ -492,9 +472,6 @@ public class GUI extends JFrame{
 	tabbedPane.addTab("Add new Subject", panel3);
 	frame.getContentPane().add(tabbedPane);
 	
-
-	
-    }
+   }
 
 }
-
