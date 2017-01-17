@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-=======
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
->>>>>>> steven-subjects
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
-import java.io.*;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.awt.event.*;
@@ -29,10 +19,15 @@ public class GUI extends JFrame{
     private String[] subNames;
     private int subnum;
     
+    
+   
+ 
     // MAIN
     public static void main(String[] args){
 	new GUI("Example.csv", "Bob")	;
     }
+
+
     private void loader (int x, String fileName,String user) {
 	Subjects nom = new Subjects(x);
 	try{
@@ -65,17 +60,6 @@ public class GUI extends JFrame{
 	    blah = "";
 	}
     }
-
-    private void newfiller ( String fileName, String user, String goal, String name, String b)
-    {
-	AddSubject a = new AddSubject(fileName , user);
-	String[]T = new String[0];
-	String[]Q = new String[0];
-	String[]P = new String[0];
-	String[]H = new String[0];
-	System.out.println(a.createClass(goal, name, b, T, Q, P, H));			
-	a.addClass(goal, name, b, T, Q, P, H);
-    }
 	
 	
 
@@ -97,7 +81,6 @@ public class GUI extends JFrame{
     private JLabel G2;
     private JLabel G3;
     private JLabel G4;
-    private JButton addAll;
     
     //toString for the grade data
     private static String toString(int[] ary){
@@ -111,7 +94,7 @@ public class GUI extends JFrame{
     }
    
     // GUI STUFF
-   
+    //public GUI(String fileName, String user){
     public GUI(final String fileName, final String user){
 	// Get Subjects
 	data = new ArrayList<String>();
@@ -389,6 +372,7 @@ public class GUI extends JFrame{
 	final JLabel errMsg = new JLabel("");
 	errMsg.setFont(new Font("Serif", Font.PLAIN, 18));
 	
+	
         
 	SpinnerNumberModel goalT = new SpinnerNumberModel(90, 0, 100, 1 );
 	final JSpinner inputGoal = new JSpinner(goalT);
@@ -417,7 +401,7 @@ public class GUI extends JFrame{
 	inputH.setFont(new Font("Serif", Font.PLAIN, 18));
 	int homeVal = (Integer) inputH.getValue();
 
-	addAll  = new JButton("Add New Subject");
+	JButton addAll  = new JButton("Add New Subject");
 	addAll.setFont(new Font("Serif", Font.PLAIN, 15));
 	//----------------------Button does stuff yay!!!
 	
@@ -426,16 +410,13 @@ public class GUI extends JFrame{
 	    {
 		public void actionPerformed(ActionEvent e)
 		{
-		    
 		    String newname = (String) inputName.getText();
-		     int goalVal = (Integer) inputGoal.getValue();
+		    int goalVal = (Integer) inputGoal.getValue();
 		    int testVal = (Integer) inputT.getValue();
 		    int quizVal = (Integer) inputQ.getValue();
 		    int projVal = (Integer) inputP.getValue();
 		    int homeVal = (Integer) inputH.getValue();
-		    String goVal = "" + goalVal;
 		    int total = testVal + quizVal + projVal + homeVal;
-		    String brkdwn = "" + testVal + "." + "" + quizVal + "." + "" + projVal + "." + "" + homeVal + ".";
 		    if (total != 100){
 			errMsg.setText("Your breakdown does not add up to 100%");
 		    }
@@ -443,32 +424,13 @@ public class GUI extends JFrame{
 			errMsg.setText("Please enter a subject Name!");
 		    }
 		    else{
-<<<<<<< HEAD
-			newfiller ( fileName,  user, goVal, newname, brkdwn);
-			errMsg.setText("Success! Your subject has been added.");
-=======
-			String BD = testVal + "." + quizVal + "." + projVal + "." + homeVal + ".";
-			AddSubject a = new AddSubject("Example.csv", "Bob");
-			String[]T = new String[0];
-			a.addClass(goalVal, newname, BD, T, T, T, T);
-			
 			errMsg.setText("Success! Your subject has been added.");
 			String brkdwn = "" + testVal + "." + "" + quizVal + "." + "" + projVal + "." + "" + homeVal + ".";
-<<<<<<< HEAD
-			
->>>>>>> steven-subjects
 			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
-	
-=======
-			File oldFile = new File("Example.csv");
-			oldFile.delete();
-
-			File newFile = new File("temp_Example.csv");
-			newFile.renameTo(oldFile);
-			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
-			
->>>>>>> steven-subjects
 		    }
+			
+		    
+		    
 		}
 	    });
 
@@ -495,7 +457,13 @@ public class GUI extends JFrame{
 	panel3.add(addAll);
 	panel3.add(errMsg);
 	
-       	//----------------------------------------------------Panel3 ends
+       
+	
+
+	
+
+
+	//----------------------------------------------------Panel3 ends
 	//TABS-----------------------------------------------------------------------
 	JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.addTab("Get Advice", panel);
@@ -503,6 +471,8 @@ public class GUI extends JFrame{
 	tabbedPane.addTab("Add new Subject", panel3);
 	frame.getContentPane().add(tabbedPane);
 	
-   }
+
+	
+    }
 
 }
