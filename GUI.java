@@ -356,7 +356,7 @@ public class GUI extends JFrame{
 	JLabel addName = new JLabel("Type in the name of your new subject below");
 	addName.setFont(new Font("Serif", Font.PLAIN, 18));
 	
-        JTextField inputName = new JTextField();
+        final JTextField inputName = new JTextField();
 	inputName.setFont(new Font("Serif", Font.PLAIN, 18));
 	JLabel goalEnt = new JLabel("Type in the goal average of your new subject below");
 	goalEnt.setFont(new Font("Serif", Font.PLAIN, 18));
@@ -370,35 +370,35 @@ public class GUI extends JFrame{
 	pEnt.setFont(new Font("Serif", Font.PLAIN, 18));
 	JLabel hEnt = new JLabel("Value of homework (in percent)");
 	hEnt.setFont(new Font("Serif", Font.PLAIN, 18));
-	JLabel errMsg = new JLabel("");
+	final JLabel errMsg = new JLabel("");
 	errMsg.setFont(new Font("Serif", Font.PLAIN, 18));
 	
 	
         
 	SpinnerNumberModel goalT = new SpinnerNumberModel(90, 0, 100, 1 );
-	JSpinner inputGoal = new JSpinner(goalT);
+	final JSpinner inputGoal = new JSpinner(goalT);
 	int goalVal = (Integer) inputGoal.getValue();
 	inputGoal.setFont(new Font("Serif", Font.PLAIN, 18));
 	
 	SpinnerNumberModel gT = new SpinnerNumberModel(60, 0, 100, 5 );
-	JSpinner inputT = new JSpinner(gT);
+	final JSpinner inputT = new JSpinner(gT);
 	inputT.setFont(new Font("Serif", Font.PLAIN, 18));
 	int testVal = (Integer) inputT.getValue();
 	
 	SpinnerNumberModel gQ = new SpinnerNumberModel(30, 0, 100, 5 );
-	JSpinner inputQ = new JSpinner(gQ);
+	final JSpinner inputQ = new JSpinner(gQ);
 	inputQ.setFont(new Font("Serif", Font.PLAIN, 18));
 	int quizVal = (Integer) inputQ.getValue();
 
 	
 	SpinnerNumberModel gP = new SpinnerNumberModel(5, 0, 100, 5 );
-	JSpinner inputP = new JSpinner(gP);
+	final JSpinner inputP = new JSpinner(gP);
 	inputP.setFont(new Font("Serif", Font.PLAIN, 18));
 	int projVal = (Integer) inputP.getValue();
 
 	
 	SpinnerNumberModel gH = new SpinnerNumberModel(5, 0, 100, 5 );
-	JSpinner inputH = new JSpinner(gH);
+	final JSpinner inputH = new JSpinner(gH);
 	inputH.setFont(new Font("Serif", Font.PLAIN, 18));
 	int homeVal = (Integer) inputH.getValue();
 
