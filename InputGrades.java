@@ -1,4 +1,6 @@
-import java.util.Scanner;
+public class InputGrades{
+    
+/**import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.*;
 
@@ -133,7 +135,7 @@ public class InputGrades {
 }
 
     
-
+*/
 
 
 
