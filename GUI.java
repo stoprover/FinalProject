@@ -368,7 +368,7 @@ public class GUI extends JFrame{
 	JLabel addName = new JLabel("Type in the name of your new subject below");
 	addName.setFont(new Font("Serif", Font.PLAIN, 18));
 	
-        JTextField inputName = new JTextField();
+        final JTextField inputName = new JTextField();
 	inputName.setFont(new Font("Serif", Font.PLAIN, 18));
 	JLabel goalEnt = new JLabel("Type in the goal average of your new subject below");
 	goalEnt.setFont(new Font("Serif", Font.PLAIN, 18));
@@ -388,7 +388,7 @@ public class GUI extends JFrame{
 	
         
 	SpinnerNumberModel goalT = new SpinnerNumberModel(90, 0, 100, 1 );
-	JSpinner inputGoal = new JSpinner(goalT);
+	final JSpinner inputGoal = new JSpinner(goalT);
 	int goalVal = (Integer) inputGoal.getValue();
 	inputGoal.setFont(new Font("Serif", Font.PLAIN, 18));
 	
@@ -424,8 +424,8 @@ public class GUI extends JFrame{
 		public void actionPerformed(ActionEvent e)
 		{
 		    
-		    final String newname = (String) inputName.getText();
-		    final int goalVal = (Integer) inputGoal.getValue();
+		    String newname = (String) inputName.getText();
+		     int goalVal = (Integer) inputGoal.getValue();
 		    int testVal = (Integer) inputT.getValue();
 		    int quizVal = (Integer) inputQ.getValue();
 		    int projVal = (Integer) inputP.getValue();
