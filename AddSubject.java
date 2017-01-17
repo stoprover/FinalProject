@@ -13,6 +13,8 @@ public class AddSubject{
     private String fileName;
     private String username;
     private String restOfAcc;
+    private File oldFile;
+    private File newFile;
 
     //sets fileName and username variables to be used throughout rest of class
     public AddSubject(String f, String u){
@@ -120,10 +122,10 @@ public class AddSubject{
 		//
 	    }
 	}
-	File oldFile = new File(fileName);
+	oldFile = new File(fileName);
 	oldFile.delete();
 
-	File newFile = new File(tempFileName);
+        newFile = new File(tempFileName);
 	newFile.renameTo(oldFile);
     }
 		
