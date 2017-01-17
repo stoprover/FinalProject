@@ -438,13 +438,15 @@ public class Subjects {
 	    return blah;
 	}
 
-	else if (uno <= 100){
-	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + uno  + " \n on your next " + num + " test(s) and 100% on your next quiz";
-	    return blah;
-	}
+
 		    
 	else if (two<= 100) {
 	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + two + " \n on your two tests.";
+	    return blah;
+	}
+
+	else if (uno <= 100){
+	    String blah = "Hi " + user + "! Your current average is " + finalAvg + ". In order to reach your goal of " + goal + " you must score at least " + uno  + " \n on your next " + num + " test(s) and 100% on your next quiz";
 	    return blah;
 	}
 	else if (dos <= 100){
