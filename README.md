@@ -14,7 +14,6 @@ WORKING FEATURES:
 	   - Users can log in or sign up (from the first window opened).
 	   - Users can switch between log in and sign up.
 	   - The options to Sign up and to Log in give correct error messages; Sign up gives error messages if the username is already in use, if the username or password are empty strings, or if the username or password include commas; and Log in gives error messages if the username or password are empty string, the username does not exist, or the password does not match the username.
-	   - Upon signing up with an acceptable username and password, a new window of the LoginGUI will open.
 	   - When the correct combination of username and password is given, the main GUI with the user's personal and grade information will open.
 - The "Grade Tracker" in the first tab (get advice) fully functions.
        	   - It displays updated grade information and appropriate advice. The GUI displays reasonable advice; for instance, it will tell the user grades that they should get on their next tests in order to achieve their goal report card grade. However, if the goal grade cannot be obtained with tests that are out of 100 points, the user will be informed that their goal is unreasonable. In addition, if the goal grade is lower than the user's current grade, they will be congratulated and will be told that they are on the right track to achieving their goal grade or above.
@@ -24,7 +23,7 @@ WORKING FEATURES:
 
 UNRESOLVED BUGS:
 ----------------------------------------------------------------------
-- Accounts that are created cannot be used, since "GUI.java" cannot open a new window for an account without subjects in it, and new accounts do not have any subjects in them. The backend in order to create an account, "CreateAcc.java", works correctly, and if one were to input an allowed username and password, this data would be added to the CSV file storing data for all accounts (this file is called "Example.csv"). In addition, a new window to log in or sign up would open, showing that this backend does work.
+- Accounts that are created cannot be used, since "GUI.java" cannot open a new window for an account without subjects in it, and new accounts do not have any subjects in them. The backend in order to create an account, "CreateAcc.java", works correctly, and if one were to input an allowed username and password, this data would be added to the CSV file storing data for all accounts (this file is called "Example.csv").
 - Error messages for logging in and signing up are cut off due to the size of the window. We were unable to change the size of the window through the code. Thus, it is necessary to physically make the GUI window larger or to maximize it in order for these error messages to not be cut off.
 - Passwords inputted when attempting to log in or sign up are not in JPasswordFields due to a lack of time to code this feature.
 - Sleep Tracker and Activity Tracker in Tab 1 are features that we did not have time to code.
