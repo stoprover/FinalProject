@@ -424,8 +424,8 @@ public class GUI extends JFrame{
 		public void actionPerformed(ActionEvent e)
 		{
 		    
-		    String newname = (String) inputName.getText();
-		    int goalVal = (Integer) inputGoal.getValue();
+		    final String newname = (String) inputName.getText();
+		    final int goalVal = (Integer) inputGoal.getValue();
 		    int testVal = (Integer) inputT.getValue();
 		    int quizVal = (Integer) inputQ.getValue();
 		    int projVal = (Integer) inputP.getValue();
