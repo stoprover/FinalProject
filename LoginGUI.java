@@ -14,6 +14,7 @@ public class LoginGUI extends JFrame{
     //change passLogInput and passSignInput to JPasswordField, rather than JTextField, and fix related methods in getting their info.
     
     private JFrame frame = new JFrame("LogSign");
+    
     private JPanel panelBoth = new JPanel();
     private JPanel panelLog = new JPanel();
     private JPanel panelSign = new JPanel();
@@ -31,13 +32,15 @@ public class LoginGUI extends JFrame{
     private JTextField passSignInput = new JTextField(12);
     // private JPasswordField passSignInput = new JPasswordField(12);
     private JLabel signMessage = new JLabel("Messages: ");
-    private JButton toSignUp = new JButton("Sign up!");
+      private JButton toSignUp = new JButton("Sign up!");
     private JButton switchToLog = new JButton ("Log in instead");
     CardLayout cl = new CardLayout();
 
     public LoginGUI(){
+	frame.setSize(1000, 300);
+	frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	
 	//Establishes the Card Layout, adds text fields, buttons, etc., to the individual cards.
 
 	//add buttons and textfields and other stuff to each individual card
@@ -57,6 +60,7 @@ public class LoginGUI extends JFrame{
 	panelSign.add(toSignUp);
 	panelSign.add(switchToLog);
 	panelSign.add(signMessage);
+
 	//panelLog.setBackground(Color.BLUE);
 	//panelSign.setBackground(Color.GREEN);
 
@@ -214,8 +218,7 @@ public class LoginGUI extends JFrame{
 			new LoginGUI();//temporary
 			//new GUI("Example.csv", username);
 
-			new LoginGUI();
-			new GUI("Example.csv", username);
+		
 
 		    }
 

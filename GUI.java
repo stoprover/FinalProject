@@ -140,9 +140,9 @@ public class GUI extends JFrame{
 
 		
 	//Dimensions
-	// this.setSize(700, 800);
+
 	final JFrame frame = new JFrame("Robo-Counselor: Grade Manager");
-	frame.setSize(700, 800);
+	frame.setSize(750, 800);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	// this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
