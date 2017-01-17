@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+>>>>>>> steven-subjects
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
@@ -441,12 +451,23 @@ public class GUI extends JFrame{
 			AddSubject a = new AddSubject("Example.csv", "Bob");
 			String[]T = new String[0];
 			a.addClass(goalVal, newname, BD, T, T, T, T);
+			
 			errMsg.setText("Success! Your subject has been added.");
 			String brkdwn = "" + testVal + "." + "" + quizVal + "." + "" + projVal + "." + "" + homeVal + ".";
+<<<<<<< HEAD
 			
 >>>>>>> steven-subjects
 			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
 	
+=======
+			File oldFile = new File("Example.csv");
+			oldFile.delete();
+
+			File newFile = new File("temp_Example.csv");
+			newFile.renameTo(oldFile);
+			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
+			
+>>>>>>> steven-subjects
 		    }
 		}
 	    });

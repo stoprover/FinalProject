@@ -124,12 +124,13 @@ public class AddSubject{
 	    }catch (IOException e){
 		//
 	    }
-	}
+	
 	File oldFile = new File(fileName);
 	oldFile.delete();
 
 	File newFile = new File(tempFileName);
 	newFile.renameTo(oldFile);
+	}
     }
 		
     public static void main(String[]args){
