@@ -61,6 +61,17 @@ public class GUI extends JFrame{
 	    blah = "";
 	}
     }
+
+    private void newfiller ( String fileName, String user, String goal, String name, String b)
+    {
+	AddSubject a = new AddSubject(fileName , user);
+	String[]T = new String[0];
+	String[]Q = new String[0];
+	String[]P = new String[0];
+	String[]H = new String[0];
+	System.out.println(a.createClass(goal, name, b, T, Q, P, H));			
+	a.addClass(goal, name, b, T, Q, P, H);
+    }
 	
 	
 
@@ -429,28 +440,11 @@ public class GUI extends JFrame{
 			errMsg.setText("Please enter a subject Name!");
 		    }
 		    else{
-			AddSubject a = new AddSubject(fileName , user);
-			String[]T = new String[0];
-			String[]Q = new String[0];
-			String[]P = new String[0];
-			String[]H = new String[0];
-			//System.out.println(a.createClass(goVal, newname, brkdwn, T, Q, P, H));			
-			a.addClass(goVal, newname, brkdwn, T, Q, P, H);
+			newfiller ( fileName,  user, goVal, newname, brkdwn);
 			errMsg.setText("Success! Your subject has been added.");
 			System.out.println("New Subject Added!:" + " BreakDown- " +  brkdwn + " Goal- " + goalVal + " Name- " +  newname);
 
 
-			//reset the comboboxes
-		
-			    //
-			    //
-			    //
-			    //
-			    //
-			    //
-			    //
-			    //
-			    
 				
 		
 			
