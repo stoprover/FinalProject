@@ -60,8 +60,11 @@ Here's a guide to seeing how individual parts of our code work.
 HOW TO USE OUR PROGRAM:
 --------------------------------------------------------------------
 There are two working accounts:
+<br>
         (username) (password)
+	<br>
       - konstans, weshallpass
+      <br>
       - Bob, 1234567890
 
 
